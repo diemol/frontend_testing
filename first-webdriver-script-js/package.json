@@ -1,0 +1,7 @@
+{
+  "name": "first-webdriver-script-js",
+  "version": "0.0.1",
+  "devDependencies": {
+    "selenium-webdriver": "2.53.1"
+  }
+}
