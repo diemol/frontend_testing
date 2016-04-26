@@ -1,5 +1,6 @@
 // Create a new instance of WebDriver
-var webdriver = require('selenium-webdriver');
+var webdriver = require('selenium-webdriver'),
+    By = webdriver.By;
 
 // Use WebDriver to visit a search engine with Firefox
 var driver = new webdriver.Builder()
@@ -8,7 +9,7 @@ var driver = new webdriver.Builder()
 driver.get("http://www.duckduckgo.com");
 
 // Get the field to input the search text
-var webElement = driver.findElement(webdriver.By.name("q"));
+var webElement = driver.findElement(By.name("q"));
 
 // Enter the search text
 webElement.sendKeys("Berlin");
@@ -28,7 +29,7 @@ webElement.submit();
  */
 driver.sleep(1000 * 5);
 
-// Print out the title of the page
+// Print out the title of the page, using promises due to the asynchronous interaction
 driver.getTitle().then(function(title) {
     console.log('Page title is: ' + title);
 });
