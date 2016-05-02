@@ -28,8 +28,8 @@ public class BaseTest {
 
         webDriver = new RemoteWebDriver(new URL(URL), desiredCapabilities);
 
-        webDriver.get(BASE_URL);
         webDriver.manage().window().maximize();
+        webDriver.get(BASE_URL);
     }
 
     @AfterMethod

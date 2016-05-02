@@ -13,7 +13,6 @@ public class HotelTest extends BaseTest {
 
     @Test
     public void bookHotelAndSelectPayAtHotelShouldLeaveBookingReserved() throws InterruptedException {
-        System.out.println("Running test");
         // Click on the 'Hotels' tab using the CSS selector syntax "css=<HTML tag><[attribute=Value of attribute]>"
         WebElement hotelsTab = webDriver.findElement(By.cssSelector("a[href='#HOTELS']"));
         hotelsTab.click();
@@ -27,7 +26,7 @@ public class HotelTest extends BaseTest {
         do {
             randomIndex = getRandomInt(locations.size());
             randomLocation = locations.get(randomIndex).getText();
-        } while (randomLocation.equalsIgnoreCase("Select Location"));
+        } while (randomIndex == 0);
         // Type the location on the location field
         WebElement locationInput = webDriver.findElement(By.cssSelector("input.select2-input.select2-focused"));
         locationInput.sendKeys(randomLocation);
