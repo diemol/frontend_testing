@@ -1,5 +1,5 @@
-// Setting a longer timeout to invoke the async callback
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000; // in microseconds.
+// Getting the Chai expect library for assertions
+var expect = require('chai').expect;
 
 // Selenium Grid url
 var seleniumGridUrl = 'http://192.168.99.100:4444/wd/hub';
@@ -7,7 +7,9 @@ var seleniumGridUrl = 'http://192.168.99.100:4444/wd/hub';
 // Create a new instance of WebDriver
 var webDriver = require('selenium-webdriver');
 
-describe('First WebDriver Test in JavaScript and Jasmine', function() {
+describe('First WebDriver Test in JavaScript and Mocha', function() {
+    // Global timeout for Mocha to wait for the callback function to be invoked
+    this.timeout(30000);
 
     // Test to check the page title in Firefox
     it('Page title should be Travel Business Partner in Firefox', function(done) {
@@ -28,10 +30,10 @@ describe('First WebDriver Test in JavaScript and Jasmine', function() {
 
         // Assert the title to the expected value
         driverFirefox.getTitle().then(function(title) {
-            expect(title).toBe('Travel Business Partner');
+            expect(title).to.equal('Travel Business Partner');
         });
 
-        // Quitting the browser and invoking the callback funtion to tell Jasmine that we are done
+        // Quitting the browser and invoking the callback function to tell Jasmine that we are done
         driverFirefox.quit().then(done);
     });
 
@@ -54,10 +56,10 @@ describe('First WebDriver Test in JavaScript and Jasmine', function() {
 
         // Assert the title to the expected value
         driverChrome.getTitle().then(function(title) {
-            expect(title).toBe('Travel Business Partner');
+            expect(title).to.equal('Travel Business Partner');
         });
 
-        // Quitting the browser and invoking the callback funtion to tell Jasmine that we are done
+        // Quitting the browser and invoking the callback function to tell Jasmine that we are done
         driverChrome.quit().then(done);
     });
 
