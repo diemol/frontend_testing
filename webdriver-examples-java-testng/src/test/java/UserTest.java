@@ -10,13 +10,8 @@ public class UserTest extends BaseTest {
 
     @Test
     public void registerUserShouldLeaveNewUserLoggedIn() {
-        // Click on the "Sign Up" link
-        WebElement myAccount = webDriver.findElement(By.cssSelector("a.show-submenu"));
-        myAccount.click();
-        WebDriverWait wait = new WebDriverWait(webDriver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[href='http://phptravels.net/register']")));
-        WebElement signUp = webDriver.findElement(By.cssSelector("a[href='http://phptravels.net/register']"));
-        signUp.click();
+        // Go to the register page
+        webDriver.get("http://phptravels.net/register");
         // Filling up the form to Sign Up
         webDriver.findElement(By.name("firstname")).sendKeys("John");
         webDriver.findElement(By.name("lastname")).sendKeys("Doe");
@@ -30,6 +25,7 @@ public class UserTest extends BaseTest {
         WebElement signUpButton = webDriver.findElement(By.cssSelector("button.signupbtn.btn_full.btn.btn-primary.btn-block.btn-lg"));
         signUpButton.click();
         // After Signing Up, we assert that we are logged in by checking the name displayed on the user page
+        WebDriverWait wait = new WebDriverWait(webDriver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h3.RTL")));
         WebElement welcomeMessage = webDriver.findElement(By.cssSelector("h3.RTL"));
         String expectedWelcomeMessage = "Hi, John Doe";
