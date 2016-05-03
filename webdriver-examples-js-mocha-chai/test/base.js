@@ -24,6 +24,7 @@ function beforeTest(done) {
 }
 
 function afterTest(done) {
+    // Quitting the browser and invoking the callback function to tell Mocha that we are done
     driver.quit().then(done);
 }
 
