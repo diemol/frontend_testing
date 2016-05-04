@@ -6,11 +6,15 @@ var webDriver = require('selenium-webdriver');
 var By = webDriver.By;
 var until = webDriver.until;
 
-var makeSuite = require('./base').makeSuite;
+// var makeSuite = require('./base').makeSuite;
+var createDriver = require('./base').createDriver;
 
-makeSuite('User Test', function() {
+describe('User Test', function() {
+    this.timeout(60000);
 
     it('Register user should leave new user logged in', function(done) {
+
+        var driver = createDriver(this._runnable.title);
 
         // Go to the register page
         driver.get("http://phptravels.net/register");
@@ -32,8 +36,10 @@ makeSuite('User Test', function() {
         var expectedWelcomeMessage = "Hi, John Doe";
         welcomeMessage.getText().then(function(welcomeText) {
             expect(welcomeText).to.equal(expectedWelcomeMessage);
-            done();
         });
+
+        // Quitting the browser and invoking the callback function to tell Mocha that we are done
+        driver.quit().then(done);
     });
 
 });

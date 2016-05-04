@@ -6,10 +6,16 @@ var webDriver = require('selenium-webdriver');
 var By = webDriver.By;
 var until = webDriver.until;
 
-var makeSuite = require('./base').makeSuite;
+// var makeSuite = require('./base').makeSuite;
+var createDriver = require('./base').createDriver;
 
-makeSuite('Hotel Test', function() {
+describe('Hotel Test', function() {
+    this.timeout(60000);
     it('Book hotel and select pay at hotel should leave booking reserved', function(done) {
+
+        var driver = createDriver(this._runnable.title);
+
+        driver.get("http://phptravels.net/");
 
         // Click on the 'Hotels' tab using the CSS selector syntax "css=<HTML tag><[attribute=Value of attribute]>"
         var hotelsTab = driver.findElement(By.css("a[href='#HOTELS']"));
@@ -96,8 +102,11 @@ makeSuite('Hotel Test', function() {
         paymentStatus = driver.wait(until.elementLocated(By.css("b.text-warning.wow.flash.animted"), 2000));
         paymentStatus.getText().then(function(status) {
             expect(status).to.equal('Reserved');
-            done();
         });
+
+        // Quitting the browser and invoking the callback function to tell Mocha that we are done
+        driver.quit().then(done);
+
     });
 });
 
