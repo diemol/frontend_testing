@@ -46,5 +46,5 @@ Afterwards you can check the executed test in your [Sauce Labs Dashboard](https:
  
  Something very important to be noted is how the `webDriver` variable is created, different from the single-threaded examples, the `webDriver` variable needs to be threadsafe because each session must be exclusive to avoid interference between tests. This example uses a `ThreadLocal<WebDriver>`, which is a common practice to keep the WebDriver session threadsafe.
  
- You can play around with the `classes`, `methods` and `classesAndMethods` parameters in the `<paralell>` tag to find a
+ You can play around with the `classes`, `methods` and `classesAndMethods` parameters in the `<parallel>` tag to find a
  tuned configuration for your test suite.
