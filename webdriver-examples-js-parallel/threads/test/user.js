@@ -6,7 +6,6 @@ var webDriver = require('selenium-webdriver');
 var By = webDriver.By;
 var until = webDriver.until;
 
-// var makeSuite = require('./base').makeSuite;
 var createDriver = require('./base').createDriver;
 
 describe('User Test', function() {

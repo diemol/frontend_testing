@@ -21,7 +21,7 @@ function createDriver(testTitle) {
     };
 
     // Create the connection through WebDriver to the Selenium Grid
-     var driver = new webDriver.Builder()
+    var driver = new webDriver.Builder()
         .withCapabilities(desiredCaps)
         .usingServer(sauceLabsUrl)
         .build();
@@ -30,5 +30,17 @@ function createDriver(testTitle) {
     return driver;
 }
 
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [day, month, year].join('/');
+}
 
 exports.createDriver = createDriver;
+exports.formatDate = formatDate;
