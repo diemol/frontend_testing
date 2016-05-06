@@ -7,6 +7,7 @@ var By = webDriver.By;
 var until = webDriver.until;
 
 var makeSuite = require('./base').makeSuite;
+var formatDate = require('./base').formatDate;
 
 makeSuite('Hotel Test', function() {
     it('Book hotel and select pay at hotel should leave booking reserved', function(done) {
@@ -37,10 +38,10 @@ makeSuite('Hotel Test', function() {
         var checkInField = driver.findElement(By.name("checkin"));
         var checkOutField = driver.findElement(By.name("checkout"));
         checkInField.clear();
-        checkInField.sendKeys(checkIn.getDate() + "/" + (checkIn.getMonth() + 1) + "/" + checkIn.getFullYear());
+        checkInField.sendKeys(formatDate(checkIn));
         checkInField.click();
         checkOutField.clear();
-        checkOutField.sendKeys(checkOut.getDate() + "/" + (checkOut.getMonth() + 1) + "/" + checkOut.getFullYear());
+        checkOutField.sendKeys(formatDate(checkOut));
         checkOutField.click();
         // Click on search
         var searchButton = driver.findElement(By.css("button[type='submit'][class*='btn-primary']"));
