@@ -101,8 +101,9 @@ describe('Hotel Test', function() {
         paymentStatus = driver.wait(until.elementLocated(By.css("b.text-warning.wow.flash.animted"), 2000));
         paymentStatus.getText().then(function(status) {
             expect(status).to.equal('Reserved');
-            done();
         });
+        // Quitting the browser and invoking the callback function to tell Mocha that we are done
+        driver.quit().then(done);
     });
 });
 
