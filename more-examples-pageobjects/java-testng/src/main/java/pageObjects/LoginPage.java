@@ -7,28 +7,28 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
-    WebDriver webDriver;
+    private WebDriver webDriver;
 
     @FindBy(name = "firstname")
-    WebElement firstName;
+    private WebElement firstName;
 
     @FindBy(name = "lastname")
-    WebElement lastName;
+    private WebElement lastName;
 
     @FindBy(name = "phone")
-    WebElement phone;
+    private WebElement phone;
 
     @FindBy(name = "email")
-    WebElement email;
+    private WebElement email;
 
     @FindBy(name = "password")
-    WebElement password;
+    private WebElement password;
 
     @FindBy(name = "confirmpassword")
-    WebElement confirmPassword;
+    private WebElement confirmPassword;
 
     @FindBy(css = "button.signupbtn.btn_full.btn.btn-primary.btn-block.btn-lg")
-    WebElement signUp;
+    private WebElement signUp;
 
     public LoginPage(WebDriver webDriver) {
         this.webDriver = webDriver;

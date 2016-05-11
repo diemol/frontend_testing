@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class UserAccountPage {
 
-    WebDriver webDriver;
+    private WebDriver webDriver;
 
     @FindBy(css = "h3.RTL")
     WebElement welcomeMessage;

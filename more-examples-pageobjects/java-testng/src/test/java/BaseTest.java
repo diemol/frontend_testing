@@ -26,9 +26,6 @@ public class BaseTest {
     private ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
 
 
-    // Base url
-    public static final String BASE_URL = "http://phptravels.net/";
-
     @BeforeMethod
     public void startWebDriverAndGetBaseUrl(Method method) throws MalformedURLException {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
@@ -39,7 +36,6 @@ public class BaseTest {
         webDriver.set(new RemoteWebDriver(new URL(SAUCE_LABS_URL), desiredCapabilities));
 
         webDriver.get().manage().window().maximize();
-        webDriver.get().get(BASE_URL);
     }
 
     @AfterMethod
@@ -50,12 +46,6 @@ public class BaseTest {
     // Returns the webDriver for the current thread
     public WebDriver getWebDriver() {
         return webDriver.get();
-    }
-
-    // Small utility method to generate a random number. Useful to select something from a list in a random way.
-    public int getRandomInt(int upperLimit) {
-        Random randomGenerator = new Random();
-        return randomGenerator.nextInt(upperLimit);
     }
 
     // Method to get a future date
