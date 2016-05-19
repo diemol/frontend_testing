@@ -11,21 +11,9 @@ tests are executed in parallel with [Mocha-Parallel-Tests](https://www.npmjs.com
     ```
     $ brew install node
     ```
-    * Install Selenium WebDriver
+    * Install Node dependencies (Selenium WebDriver, Mocha, Chai, and Mocha-Parallel-Tests)
     ```
-    $ npm install selenium-webdriver
-    ```
-    * Install Mocha
-    ```
-    $ npm install -g mocha
-    ```
-    * Install Chai
-    ```
-    $ npm install chai
-    ```
-    * Install the Mocha-Parallel-Tests package
-    ```
-    $ npm install mocha-parallel-tests
+    $ npm install
     ```
 2. Sauce Credentials
     * In the terminal export your Sauce Labs Credentials as environmental variables:
@@ -50,11 +38,11 @@ tests are executed in parallel with [Mocha-Parallel-Tests](https://www.npmjs.com
 
   [Threads](https://github.com/diemol/frontend_testing/tree/master/more-examples-parallel/js-mocha-chai/threads) example:
 	```
-	$ ./node_modules/.bin/mocha-parallel-tests --max-parallel 2 ./threads/test/
+	$ npm test ./threads/test/
 	```
   [Threads and Browsers](https://github.com/diemol/frontend_testing/tree/master/more-examples-parallel/js-mocha-chai/threads-and-browsers) example:
 	```
-	$ ./node_modules/.bin/mocha-parallel-tests --max-parallel 2 ./threads-and-browsers/test/
+	$ npm test ./threads-and-browsers/test/
 	```
 
 Afterwards you can check the executed test in the [Sauce Labs Dashboard](https://saucelabs.com/beta/dashboard/)
