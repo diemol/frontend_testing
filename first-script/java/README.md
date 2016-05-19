@@ -20,7 +20,7 @@
 1. Change directory to execute the examples:
 
     ```
-    $ cd first-script/js
+    $ cd first-script/java
     ```
 1. Execute the code
 
