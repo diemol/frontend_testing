@@ -2,7 +2,8 @@
 var expect = require('chai').expect;
 
 // Selenium Grid url
-var seleniumGridUrl = 'http://192.168.99.100:4444/wd/hub';
+var dockerMachineHost = process.env.DOCKER_MACHINE_HOST;
+var seleniumGridUrl = 'http://' + dockerMachineHost + ':4444/wd/hub';
 
 // Create a new instance of WebDriver
 var webDriver = require('selenium-webdriver');
