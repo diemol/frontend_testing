@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class BaseTest {
     // Setting the url for the WebDriver
-    public static final String DOCKER_MACHINE_HOST = "192.168.99.100";
+    public static final String DOCKER_MACHINE_HOST = System.getenv("DOCKER_MACHINE_HOST");
     public static final String URL = String.format("http://%s:4444//wd/hub", DOCKER_MACHINE_HOST);
     public WebDriver webDriver;
 
