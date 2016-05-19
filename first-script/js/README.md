@@ -1,4 +1,32 @@
-Node needs to be installed
-```sh
-$ npm install selenium-webdriver
-```
+#### Environment Setup
+
+1. Project Dependencies
+    * Install [Node.js](https://nodejs.org/en/)
+    * Or Install Node.js with [Homebrew](http://brew.sh/)
+    ```
+    $ brew install node
+    ```
+    * Install Node dependencies (only Selenium WebDriver in this case)
+    ```
+    $ npm install 
+    ```
+
+### Steps to run it:
+
+1. Clone the repo:
+
+    ```
+    $ git clone https://github.com/diemol/frontend_testing
+    ```
+1. Change directory to:
+
+    ```
+    $ cd first-script/js
+    ```
+1. Execute the code
+
+	```
+	$ npm start
+	```
+
+After this, the Firefox browser should open and show the interaction with the search engine.
