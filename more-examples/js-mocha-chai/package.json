@@ -1,8 +1,8 @@
 {
   "name": "js-mocha-chai",
   "version": "1.0.0",
-  "description": "First Test with Mocha and Chai",
-  "main": "test/first-webdriver-test-js-mocha-chai.js",
+  "description": "More complex tests with Mocha and Chai",
+  "main": "test/base.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha"
   },
@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/diemol/frontend_testing/issues"
   },
-  "homepage": "https://github.com/diemol/frontend_testing/tree/master/first-test/js-mocha-chai#readme",
+  "homepage": "https://github.com/diemol/frontend_testing/tree/master/more-examples/js-mocha-chai#readme",
   "dependencies": {
     "chai": "^3.5.0",
     "mocha": "^2.4.5",
