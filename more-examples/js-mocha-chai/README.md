@@ -33,7 +33,7 @@
 1. Change directory to:
 
     ```
-    $ cd first-test/js-mocha-chai
+    $ cd more-examples/js-mocha-chai
     ```
 1. Execute the code
 
