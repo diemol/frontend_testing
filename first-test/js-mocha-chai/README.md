@@ -7,7 +7,7 @@
     * Or Install Node.js with [Homebrew](http://brew.sh/)
     ```
     $ brew install node
-
+    ```
 1. docker-selenium running
     * [Start docker-selenium](https://github.com/diemol/frontend_testing/blob/master/first-test/README.md#docker-selenium-is-used-to-run-the-tests)
 
