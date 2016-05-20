@@ -11,10 +11,6 @@ tests are executed in parallel with [Mocha-Parallel-Tests](https://www.npmjs.com
     ```
     $ brew install node
     ```
-    * Install Node dependencies (Selenium WebDriver, Mocha, Chai, and Mocha-Parallel-Tests)
-    ```
-    $ npm install
-    ```
 2. Sauce Credentials
     * In the terminal export your Sauce Labs Credentials as environmental variables:
     ```
@@ -33,6 +29,11 @@ tests are executed in parallel with [Mocha-Parallel-Tests](https://www.npmjs.com
 
     ```
     $ cd more-examples-parallel/js-mocha-chai
+    ```
+1. Install Node dependencies (Selenium WebDriver, Mocha, Chai, and Mocha-Parallel-Tests):
+
+    ```
+    $ npm install
     ```
 1. Execute the code
 

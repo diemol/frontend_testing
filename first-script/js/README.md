@@ -6,10 +6,6 @@
     ```
     $ brew install node
     ```
-    * Install Node dependencies (only Selenium WebDriver in this case)
-    ```
-    $ npm install 
-    ```
 
 ### Steps to run it:
 
@@ -22,6 +18,11 @@
 
     ```
     $ cd first-script/js
+    ```
+1. Install Node dependencies (only Selenium WebDriver in this case):
+
+    ```
+    $ npm install
     ```
 1. Execute the code
 

@@ -8,10 +8,6 @@
     ```
     $ brew install node
     ```
-    * Install Node dependencies (Selenium WebDriver, Mocha, and Chai)
-    ```
-    $ npm install
-    ```
 
 1. docker-selenium running
     * [Start docker-selenium](https://github.com/diemol/frontend_testing/blob/master/first-test/README.md#docker-selenium-is-used-to-run-the-tests)
@@ -34,6 +30,11 @@
 
     ```
     $ cd more-examples/js-mocha-chai
+    ```
+1. Install Node dependencies (Selenium WebDriver, Mocha, and Chai):
+
+    ```
+    $ npm install
     ```
 1. Execute the code
 
