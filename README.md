@@ -8,7 +8,7 @@ The main idea of the code is to show how tests can be written from scratch, but 
 could be used to simplify the code and provide helper functions. Nevertheless, the intention is to keep it basic and
 simple.
 
-The examples are provided in Java with JUnit/TestNG and JavaScript with Mocha + Chai.
+The examples are provided in Java with TestNG and JavaScript with Mocha + Chai.
 
 ### The code is structured as follows:
 * [first-test](https://github.com/diemol/frontend_testing/tree/master/first-test)
