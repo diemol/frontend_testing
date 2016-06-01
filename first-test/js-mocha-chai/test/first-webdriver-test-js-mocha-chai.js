@@ -27,7 +27,7 @@ describe('First WebDriver Test in JavaScript and Mocha', function() {
             expect(title).to.equal('Travel Business Partner');
         });
 
-        // Quitting the browser and invoking the callback function to tell Jasmine that we are done
+        // Quitting the browser and invoking the callback function to tell Mocha that we are done
         driver.quit().then(done);
     });
 
