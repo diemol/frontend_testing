@@ -13,10 +13,10 @@ The examples are provided in Java with TestNG and JavaScript with Mocha + Chai.
 ### The code is structured as follows:
 * [first-test](https://github.com/diemol/frontend_testing/tree/master/first-test)
 
-    A slight extension of the previous example, where a page is open and interacted with it, and finally an assertion of a expected value is done.
-* [more-examples](https://github.com/diemol/frontend_testing/tree/master/more-examples)
+    A page is opened, the page title is retrieved, and finally an assertion of a expected value is done.
+* [user-registration](https://github.com/diemol/frontend_testing/tree/master/user-registration)
 
-    A couple of more complex examples showing tests for two typical scenarios (user registration and booking a hotel room).
+    This is a simple example where a user gets registered on a website.
 * [more-examples-parallel](https://github.com/diemol/frontend_testing/tree/master/more-examples-parallel)
 
     After having tests working, a natural step is to try to execute all of them in less time. The examples shown in the previous step, are executed in parallel with slight changes in the code.
