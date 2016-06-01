@@ -9,15 +9,6 @@
     $ brew install maven
     ```
 
-1. docker-selenium running
-    * [Start docker-selenium](https://github.com/diemol/frontend_testing/blob/master/first-test/README.md#docker-selenium-is-used-to-run-the-tests)
-
-1. Export the docker machine IP
-    * In the terminal export your docker machine IP as environment variable:
-    ```
-    $ export DOCKER_MACHINE_HOST=<your docker machine IP>
-    ```
-
 #### Steps to run it:
 
 1. Clone the repo:
