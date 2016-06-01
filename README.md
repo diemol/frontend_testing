@@ -11,9 +11,6 @@ simple.
 The examples are provided in Java with JUnit/TestNG and JavaScript with Mocha + Chai.
 
 ### The code is structured as follows:
-* [first-script](https://github.com/diemol/frontend_testing/tree/master/first-script)
-
-    Simple code showing how to use WebDriver to open a page and interact with it.
 * [first-test](https://github.com/diemol/frontend_testing/tree/master/first-test)
 
     A slight extension of the previous example, where a page is open and interacted with it, and finally an assertion of a expected value is done.

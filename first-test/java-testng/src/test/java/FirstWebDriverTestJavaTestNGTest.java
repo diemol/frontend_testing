@@ -19,7 +19,7 @@ public class FirstWebDriverTestJavaTestNGTest {
         driver.get("http://phptravels.net/");
 
         // Assert that the title is the expected one
-        Assert.assertEquals("Page title is not the expected one", "Travel Business Partner", driver.getTitle());
+        Assert.assertEquals(driver.getTitle(), "Travel Business Partner", "Page title is not the expected one");
 
         // Close the browser
         driver.quit();
