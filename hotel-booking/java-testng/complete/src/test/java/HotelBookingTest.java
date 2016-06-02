@@ -126,7 +126,7 @@ public class HotelBookingTest {
 
     }
 
-    // Method to get a future date
+    // Method to get a future date (useful for the checkin and checkout dates)
     public Date getFutureDate(Date baseDate) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(baseDate);
