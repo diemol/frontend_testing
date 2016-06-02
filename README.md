@@ -17,6 +17,9 @@ The examples are provided in Java with TestNG and JavaScript with Mocha + Chai.
 * [user-registration](https://github.com/diemol/frontend_testing/tree/master/user-registration)
 
     This is a simple example where a user gets registered on a website.
+* [hotel-booking](https://github.com/diemol/frontend_testing/tree/master/hotel-booking)
+
+    This is an example where a guest user books a hotel on a website.
 * [more-examples-parallel](https://github.com/diemol/frontend_testing/tree/master/more-examples-parallel)
 
     After having tests working, a natural step is to try to execute all of them in less time. The examples shown in the previous step, are executed in parallel with slight changes in the code.
