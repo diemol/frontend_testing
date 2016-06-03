@@ -63,22 +63,20 @@ describe('Hotel Booking', function(done) {
         searchButton.click();
 
         // In the results page, click on the first hotel
-        driver.executeScript("return {state: document.readyState}").then(function(result) {
+        driver.executeScript("return {state: jQuery.active}").then(function(result) {
             console.log(result.state);
         });
-        // driver.wait(until.elementsLocated(By.css("button[type='submit'][class='btn btn-action']")), 10000);
         driver.findElements(By.css("button[type='submit'][class='btn btn-action']")).then(function(hotelsResult){
             hotelsResult[0].click();
         });
 
 
         // In the hotel detail page, click on the first "Book Now" button
-        // driver.wait(until.elementsLocated(By.css("button.btn.btn-action.btn-block.chk")), 10000);
         driver.findElements(By.css("button.btn.btn-action.btn-block.chk")).then(function(bookNowButtons) {
             bookNowButtons[0].isDisplayed().then(function(isDisplayed) {
                 if (!isDisplayed) {
                     var actions = new webDriver.ActionSequence(driver);
-                    actions.mouseMove(bookNowButtons[randomIndex]);
+                    actions.mouseMove(bookNowButtons[0]);
                     actions.perform();
                 }
             });
@@ -109,8 +107,6 @@ describe('Hotel Booking', function(done) {
         driver.switchTo().alert().accept();
 
         // To assert the payment status again, we need to wait until the element disappears and appears again
-        // var paymentStatus = driver.wait(until.elementLocated(By.css("b.text-warning.wow.flash.animted"), 3000));
-        // driver.wait(until.elementTextIs(driver.findElement(By.css("b.text-warning.wow.flash.animted")), "Reserved"), 5000);
         driver.wait(until.stalenessOf(driver.findElement(By.css("b.text-warning.wow.flash.animted"))), 5000);
         var paymentStatus = driver.wait(until.elementLocated(By.css("b.text-warning.wow.flash.animted"), 3000));
         paymentStatus.getText().then(function(status) {

@@ -43,11 +43,7 @@ public class HotelBookingTest {
     public void bookHotelAndSelectPayAtHotelShouldLeaveBookingReserved() {
 
         // Go to the homepage
-        webDriver.get("http://phptravels.net");
-
-        // Click on the 'Hotels' tab using the CSS selector syntax "css=<HTML tag><[attribute=Value of attribute]>"
-        WebElement hotelsTab = webDriver.findElement(By.cssSelector("a[href='#HOTELS']"));
-        hotelsTab.click();
+        webDriver.get("http://phptravels.net/hotels");
 
         // Click on the 'Select Location' field
         WebElement locationField = webDriver.findElement(By.className("select2-chosen"));
@@ -72,16 +68,12 @@ public class HotelBookingTest {
         checkOutField.click();
 
         // Click on search
-        WebElement searchButton = webDriver.findElement(By.cssSelector("button.btn-action.btn.btn-lg.btn-block"));
+        WebElement searchButton = webDriver.findElement(By.cssSelector("button.btn.btn-block.btn-action"));
         searchButton.click();
 
         // In the results page, click on the first listed hotel
-        List<WebElement> hotelsResult = webDriver.findElements(By.cssSelector("button[type='submit'][class*='btn btn-action']"));
-        for (WebElement aHotelsResult : hotelsResult) {
-            if (aHotelsResult.isDisplayed()) {
-                aHotelsResult.click();
-            }
-        }
+        List<WebElement> hotelsResult = webDriver.findElements(By.cssSelector("button[type='submit'][class='btn btn-action']"));
+        hotelsResult.get(0).click();
 
         // In the hotel detail page, click on the first "Book Now" button
         List<WebElement> bookNowButtons = webDriver.findElements(By.cssSelector("button.btn.btn-action.btn-block.chk"));
