@@ -33,7 +33,7 @@ describe('Hotel Booking Test', function() {
     it('Book Hotel And Select Pay At Hotel Should Leave Booking Reserved', function(done) {
 
         // Go to the register page
-        driver.get("http://phptravels.net/").then(done);
+        driver.get("http://phptravels.net/hotels").then(done);
 
     });
 
