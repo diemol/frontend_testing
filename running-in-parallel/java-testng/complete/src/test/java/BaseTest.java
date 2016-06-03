@@ -11,9 +11,6 @@ import org.testng.annotations.DataProvider;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
 
 public class BaseTest {
 
@@ -24,11 +21,7 @@ public class BaseTest {
             userName, accessKey);
 
     // We need a thread safe environment to handle the webDriver variable in each thread separately
-    private ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
-
-
-    // Base url
-    public static final String BASE_URL = "http://phptravels.net/";
+    private ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
 
     // Data provider which returns the browsers that will be used to run the tests
     @DataProvider(name = "browsersAndPlatforms", parallel = true)
@@ -42,19 +35,18 @@ public class BaseTest {
         };
     }
 
-
-    public WebDriver startWebDriverAndGetBaseUrl(String browserType, Platform platform, String methodName)
-            throws MalformedURLException {
+    @BeforeMethod
+    public void startWebDriverAndGetBaseUrl(Method method, Object[] testArgs) throws MalformedURLException {
+        String browserType = testArgs[0].toString();
+        Platform platform = (Platform) testArgs[1];
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability(CapabilityType.BROWSER_NAME, browserType);
         desiredCapabilities.setCapability(CapabilityType.PLATFORM, platform);
-        desiredCapabilities.setCapability("name", methodName);
+        desiredCapabilities.setCapability("name", method.getName());
 
         webDriver.set(new RemoteWebDriver(new URL(SAUCE_LABS_URL), desiredCapabilities));
 
         webDriver.get().manage().window().maximize();
-        webDriver.get().get(BASE_URL);
-        return webDriver.get();
     }
 
     @AfterMethod
@@ -62,18 +54,9 @@ public class BaseTest {
         webDriver.get().quit();
     }
 
-    // Small utility method to generate a random number. Useful to select something from a list in a random way.
-    public int getRandomInt(int upperLimit) {
-        Random randomGenerator = new Random();
-        return randomGenerator.nextInt(upperLimit);
-    }
-
-    // Method to get a future date
-    public Date getFutureDate(Date baseDate) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(baseDate);
-        calendar.add(Calendar.DATE, 5);
-        return calendar.getTime();
+    // Returns the webDriver for the current thread
+    public WebDriver getWebDriver() {
+        return webDriver.get();
     }
 
 }

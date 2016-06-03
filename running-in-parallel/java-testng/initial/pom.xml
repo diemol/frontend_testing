@@ -5,12 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.frontend.example</groupId>
-    <artifactId>webdriver-examples-parallel-java-testng</artifactId>
+    <artifactId>running-in-parallel-example-initial</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
     <dependencies>
         <!-- TestNG dependency -->
@@ -51,7 +47,7 @@
                 <version>2.19.1</version>
                 <configuration>
                     <parallel>methods</parallel>
-                    <threadCount>2</threadCount>
+                    <threadCount>1</threadCount>
                 </configuration>
             </plugin>
         </plugins>
