@@ -1,0 +1,25 @@
+{
+  "name": "js-mocha-chai-parallel",
+  "version": "1.0.0",
+  "description": "WebDriver examples running in parallel, using Mocha and Chai",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha-parallel-tests --max-parallel 1 ./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diemol/frontend_testing.git"
+  },
+  "author": "https://github.com/diemol",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diemol/frontend_testing/issues"
+  },
+  "homepage": "https://github.com/diemol/frontend_testing#readme",
+  "dependencies": {
+    "mocha-parallel-tests": "^0.4.2",
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "selenium-webdriver": "^2.53.2"
+  }
+}
