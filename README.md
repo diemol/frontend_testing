@@ -23,7 +23,7 @@ The examples are provided in Java with TestNG and JavaScript with Mocha + Chai.
 * [running-in-parallel](https://github.com/diemol/frontend_testing/tree/master/running-in-parallel)
 
     After having tests working, a natural step is to try to execute all of them in less time. Some simple examples where a page is loaded are executed in parallel.
-* [more-examples-pageobjects](https://github.com/diemol/frontend_testing/tree/master/more-examples-pageobjects)
+* [page-objects](https://github.com/diemol/frontend_testing/tree/master/page-objects)
 
-    A final round up of the previous examples but now using the Page Object model/pattern, which is know as one of the best practices when doing Frontend Testing.
+    A final round up of the hotel booking example but now using the Page Object model/pattern, which is know as one of the best practices when doing Frontend Testing.
 
