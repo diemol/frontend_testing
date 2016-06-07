@@ -4,7 +4,7 @@
   "description": "WebDriver examples running in parallel, using Mocha and Chai",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha-parallel-tests --max-parallel 2"
+    "test": "./node_modules/.bin/grunt"
   },
   "repository": {
     "type": "git",
@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/diemol/frontend_testing#readme",
   "dependencies": {
-    "mocha-parallel-tests": "^0.4.2",
     "chai": "^3.5.0",
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-mocha-parallel": "^0.1.7",
+    "grunt-parallel": "^0.5.1",
     "mocha": "^2.4.5",
     "selenium-webdriver": "^2.53.2"
   }

@@ -38,7 +38,7 @@ framework. The tests are executed in parallel with [Mocha-Parallel-Tests](https:
 1. Execute the code:
 
 	```
-	$ npm test ./test/
+	$ npm test
 	```
 
 Afterwards you can check the executed test in the [Sauce Labs Dashboard](https://saucelabs.com/beta/dashboard/)
@@ -49,5 +49,7 @@ Afterwards you can check the executed test in the [Sauce Labs Dashboard](https:/
 The tests are executed in several threads using the mocha-parallel-tests. This `npm` package grabs every JS file in
 the `test` folder and runs it in its own thread. In addition, you can change the `--max-parallel` value in the
 package.json file to increase the number of threads if needed.
+
+When multiple browsers are used, the project is wrapped in several Grunt tasks and then executed in parallel.
 
 

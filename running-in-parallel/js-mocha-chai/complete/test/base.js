@@ -13,8 +13,8 @@ function createDriver(testTitle) {
 
     // We declare that we want to run the test on Chrome + Linux
     var desiredCaps = {
-        'browserName': webDriver.Browser.CHROME,
-        'platform': 'LINUX',
+        'browserName': process.env.BROWSER,
+        'platform': process.env.PLATFORM,
         'username': userName,
         'accessKey': accessKey,
         'name': testTitle
@@ -30,17 +30,4 @@ function createDriver(testTitle) {
     return driver;
 }
 
-function formatDate(date) {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
-
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-
-    return [day, month, year].join('/');
-}
-
 exports.createDriver = createDriver;
-exports.formatDate = formatDate;
