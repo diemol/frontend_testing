@@ -8,37 +8,38 @@ framework. The tests are executed in parallel with [Mocha-Parallel-Tests](https:
 1. Project Dependencies
     * Install [Node.js](https://nodejs.org/en/)
     * Or Install Node.js with [Homebrew](http://brew.sh/)
-    ```
-    $ brew install node
+    ```sh
+    brew install node
     ```
 2. Sauce Credentials
     * In the terminal export your Sauce Labs Credentials as environmental variables:
-    ```
-    $ export SAUCE_USERNAME=<your Sauce Labs username>
-    $ export SAUCE_ACCESS_KEY=<your Sauce Labs access key>
+    ```sh
+    export SAUCE_USERNAME=<your Sauce Labs username>
+    export SAUCE_ACCESS_KEY=<your Sauce Labs access key>
     ```
 
 ### Steps to run it:
 
 1. Clone the repo:
 
-    ```
-    $ git clone https://github.com/diemol/frontend_testing
+    ```sh
+    git clone https://github.com/diemol/frontend_testing
+    cd frontend_testing
     ```
 1. Change directory to:
 
-    ```
-    $ cd running-in-parallel/js-mocha-chai/<initial/complete>
+    ```sh
+    cd running-in-parallel/js-mocha-chai/<initial/complete>
     ```
 1. Install Node dependencies (Selenium WebDriver, Mocha, Chai, and Mocha-Parallel-Tests):
 
-    ```
-    $ npm install
+    ```sh
+    npm install
     ```
 1. Execute the code:
 
-	```
-	$ npm test
+	```sh
+	npm test
 	```
 
 Afterwards you can check the executed test in the [Sauce Labs Dashboard](https://saucelabs.com/beta/dashboard/)

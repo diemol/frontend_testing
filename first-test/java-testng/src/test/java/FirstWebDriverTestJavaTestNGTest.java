@@ -1,5 +1,6 @@
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+// import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -9,8 +10,10 @@ public class FirstWebDriverTestJavaTestNGTest {
 
     @Test
     public void checkPHPTravelsPageTitle() throws MalformedURLException {
-        // Create a new instance of the Firefox driver
-        WebDriver driver = new FirefoxDriver();
+        // Create a new instance of the Chrome driver
+        WebDriver driver = new ChromeDriver();
+        // or Create a new instance of the Firefox driver
+        //  WebDriver driver = new FirefoxDriver();
 
         // Maximize the window
         driver.manage().window().maximize();
