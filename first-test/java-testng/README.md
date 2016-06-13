@@ -12,7 +12,7 @@
 1. docker-selenium running
     * [Start docker-selenium](https://github.com/diemol/frontend_testing/blob/master/user-registration/README.md#docker-selenium-is-used-to-run-the-tests)
 
-1. _<optional>_: If your docker machine does not run on `localhost`, export the docker machine IP
+1. _Optional_: If your docker machine does not run on `localhost`, export the docker machine IP
     * In the terminal export your docker machine IP as environment variable:
     ```sh
     export DOCKER_MACHINE_HOST=<your docker machine IP>
