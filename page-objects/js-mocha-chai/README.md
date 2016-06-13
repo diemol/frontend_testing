@@ -8,8 +8,8 @@ implementing [Page Objects](http://martinfowler.com/bliki/PageObject.html).
 1. Project Dependencies
     * Install [Node.js](https://nodejs.org/en/)
     * Or Install Node.js with [Homebrew](http://brew.sh/)
-    ```
-    $ brew install node
+    ```sh
+    brew install node
     ```
 
 1. docker-selenium running
@@ -17,32 +17,35 @@ implementing [Page Objects](http://martinfowler.com/bliki/PageObject.html).
 
 1. Export the docker machine IP
     * In the terminal export your docker machine IP as environment variable:
+    ```sh
+    export DOCKER_MACHINE_HOST=<your docker machine IP>
     ```
-    $ export DOCKER_MACHINE_HOST=<your docker machine IP>
-    ```
+
+    If you are using Linux simply set it to `localhost`
 
 
 ### Steps to run it:
 
 1. Clone the repo:
 
-    ```
-    $ git clone https://github.com/diemol/frontend_testing
+    ```sh
+    git clone https://github.com/diemol/frontend_testing
+    cd frontend_testing
     ```
 1. Change directory to:
 
-    ```
-    $ cd page-objects/js-mocha-chai/<initial/complete>
+    ```sh
+    cd page-objects/js-mocha-chai/<initial/complete>
     ```
 1. Install Node dependencies (Selenium WebDriver, Mocha, and Chai):
 
-    ```
-    $ npm install
+    ```sh
+    npm install
     ```
 1. Execute the code
 
-	```
-	$ npm test
+	```sh
+	npm test
 	```
 
 ### More information

@@ -5,26 +5,27 @@
 1. Global Dependencies
     * [Install Maven](https://maven.apache.org/install.html)
     * Or Install Maven with [Homebrew](http://brew.sh/)
-    ```
-    $ brew install maven
+    ```sh
+    brew install maven
     ```
 
 #### Steps to run it:
 
 1. Clone the repo:
 
-    ```
-    $ git clone https://github.com/diemol/frontend_testing.git
+    ```sh
+    git clone https://github.com/diemol/frontend_testing.git
+    cd frontend_testing
     ```
 1. Change directory to execute the examples:
 
-    ```
-    $ cd first-test/java-testng
+    ```sh
+    cd first-test/java-testng
     ```
 1. Execute the code
 
-	```
-	$ mvn test
+	```sh
+	mvn test
 	```
 
 

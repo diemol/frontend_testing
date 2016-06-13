@@ -5,6 +5,8 @@ var driver;
 
 // Create a new instance of WebDriver
 var webDriver = require('selenium-webdriver');
+var By = webDriver.By;
+var until = webDriver.until;
 
 // Getting the Chai expect library for assertions
 var expect = require('chai').expect;

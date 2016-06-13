@@ -11,9 +11,9 @@ describe('First WebDriver Test in JavaScript and Mocha', function() {
     // Test to check the page title
     it('Page title should be Travel Business Partner', function(done) {
 
-        // Use WebDriver to visit a search engine with Firefox
+        // Use WebDriver to visit a search engine with Chrome
         var driver = new webDriver.Builder()
-                .forBrowser("firefox")
+                .forBrowser("chrome")
                 .build();
 
         // Maximize the window

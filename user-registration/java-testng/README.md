@@ -5,8 +5,8 @@
 1. Global Dependencies
     * [Install Maven](https://maven.apache.org/install.html)
     * Or Install Maven with [Homebrew](http://brew.sh/)
-    ```
-    $ brew install maven
+    ```sh
+    brew install maven
     ```
 
 1. docker-selenium running
@@ -14,26 +14,27 @@
 
 1. Export the docker machine IP
     * In the terminal export your docker machine IP as environment variable:
-    ```
-    $ export DOCKER_MACHINE_HOST=<your docker machine IP>
+    ```sh
+    export DOCKER_MACHINE_HOST=<your docker machine IP>
     ```
 
 #### Steps to run it:
 
 1. Clone the repo:
 
-    ```
-    $ git clone https://github.com/diemol/frontend_testing.git
+    ```sh
+    git clone https://github.com/diemol/frontend_testing.git
+    cd frontend_testing
     ```
 1. Change directory to execute the examples:
 
-    ```
-    $ cd user-registration/java-testng
+    ```sh
+    cd user-registration/java-testng
     ```
 1. Execute the code
 
-	```
-	$ mvn test
+	```sh
+	mvn test
 	```
 
 
