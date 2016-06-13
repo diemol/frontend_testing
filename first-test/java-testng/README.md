@@ -15,6 +15,7 @@
 1. _Optional_: If your docker machine does not run on `localhost`, export the docker machine IP
     * In the terminal export your docker machine IP as environment variable:
     ```sh
+    docker-machine ip default
     export DOCKER_MACHINE_HOST=<your docker machine IP>
     ```
 
