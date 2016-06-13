@@ -20,8 +20,9 @@ import java.util.List;
 public class HotelBookingTest {
 
     // Setting the url for the WebDriver
-    public static final String DOCKER_MACHINE_HOST = System.getenv("DOCKER_MACHINE_HOST");
-    public static final String URL = String.format("http://%s:4444//wd/hub", DOCKER_MACHINE_HOST);
+    public static final String DOCKER_MACHINE_HOST = (System.getenv("DOCKER_MACHINE_HOST") == null) ?
+            "localhost" : System.getenv("DOCKER_MACHINE_HOST");
+    public static final String URL = String.format("http://%s:4444/wd/hub", DOCKER_MACHINE_HOST);
     public WebDriver webDriver;
 
     @BeforeMethod

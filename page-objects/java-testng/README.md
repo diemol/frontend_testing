@@ -14,13 +14,12 @@ This is an example running a test written in Java, using TestNG, and implementin
 1. docker-selenium running
     * [Start docker-selenium](https://github.com/diemol/frontend_testing/blob/master/page-objects/README.md#docker-selenium-is-used-to-run-the-tests)
 
-1. Export the docker machine IP
+1. _Optional_: If your docker machine does not run on `localhost`, export the docker machine IP
     * In the terminal export your docker machine IP as environment variable:
     ```sh
+    docker-machine ip default
     export DOCKER_MACHINE_HOST=<your docker machine IP>
     ```
-
-    If you are using Linux simply set it to `localhost`
 
 #### Steps to run it:
 

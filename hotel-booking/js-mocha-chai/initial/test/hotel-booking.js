@@ -1,5 +1,6 @@
 // Selenium Grid url
-var dockerMachineHost = process.env.DOCKER_MACHINE_HOST;
+var dockerMachineHost = (typeof process.env.DOCKER_MACHINE_HOST === "undefined") ?
+    "localhost" : process.env.DOCKER_MACHINE_HOST;
 var seleniumGridUrl = 'http://' + dockerMachineHost + ':4444/wd/hub';
 var driver;
 
