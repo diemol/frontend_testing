@@ -1,6 +1,10 @@
 // Getting the Chai expect library for assertions
 var expect = require('chai').expect;
 
+// Selenium Grid url
+var dockerMachineHost = process.env.DOCKER_MACHINE_HOST;
+var seleniumGridUrl = 'http://' + dockerMachineHost + ':4444/wd/hub';
+
 // Create a new instance of WebDriver
 var webDriver = require('selenium-webdriver');
 
@@ -11,10 +15,15 @@ describe('First WebDriver Test in JavaScript and Mocha', function() {
     // Test to check the page title
     it('Page title should be Travel Business Partner', function(done) {
 
+        var capabilities = new webDriver.Capabilities().
+        set(webDriver.Capability.BROWSER_NAME, webDriver.Browser.CHROME).
+        set(webDriver.Capability.PLATFORM, 'LINUX');
+
         // Use WebDriver to visit a search engine with Chrome
         var driver = new webDriver.Builder()
-                .forBrowser("chrome")
-                .build();
+            .withCapabilities(capabilities)
+            .usingServer(seleniumGridUrl)
+            .build();
 
         // Maximize the window
         driver.manage().window().maximize();
