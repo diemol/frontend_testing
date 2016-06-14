@@ -10,12 +10,8 @@ Both implementations are made to run on [SauceLabs](https://saucelabs.com/)
 
 #### Environment Setup:
 
-1. Global Dependencies
-    * [Install Maven](https://maven.apache.org/install.html)
-    * Or Install Maven with [Homebrew](http://brew.sh/)
-    ```sh
-    brew install maven
-    ```
+1. Check your [Java](https://github.com/diemol/frontend_testing#java) setup.
+
 1. Sauce Credentials
     * In the terminal export your Sauce Labs Credentials as environmental variables:
     ```sh

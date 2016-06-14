@@ -5,12 +5,8 @@ framework. The tests are executed in parallel with [Mocha-Parallel-Tests](https:
 
 ### Environment Setup
 
-1. Project Dependencies
-    * Install [Node.js](https://nodejs.org/en/)
-    * Or Install Node.js with [Homebrew](http://brew.sh/)
-    ```sh
-    brew install node
-    ```
+1. Check your [JavaScript](https://github.com/diemol/frontend_testing#javascript) setup.
+
 2. Sauce Credentials
     * In the terminal export your Sauce Labs Credentials as environmental variables:
     ```sh
