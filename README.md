@@ -32,16 +32,18 @@ The examples are provided in Java with TestNG and JavaScript with Mocha + Chai.
 
 ### Java
 
-    * [Install Maven](https://maven.apache.org/install.html)
-    * Or Install Maven with [Homebrew](http://brew.sh/)
+* [Install Maven](https://maven.apache.org/install.html)
+* Or Install Maven with [Homebrew](http://brew.sh/)
+
     ```sh
     brew install maven
     ```
 
 ### JavaScript
 
-    * Install [Node.js](https://nodejs.org/en/)
-    * Or Install Node.js with [Homebrew](http://brew.sh/)
+* Install [Node.js](https://nodejs.org/en/)
+* Or Install Node.js with [Homebrew](http://brew.sh/)
+
     ```sh
     brew install node
     ```
