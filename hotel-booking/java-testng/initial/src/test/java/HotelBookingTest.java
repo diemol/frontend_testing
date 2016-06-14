@@ -38,7 +38,7 @@ public class HotelBookingTest {
     public void bookHotelAndSelectPayAtHotelShouldLeaveBookingReserved() {
 
         // Go to the homepage
-        webDriver.get("http://phptravels.net");
+        webDriver.get("http://phptravels.net/hotels");
 
     }
 
