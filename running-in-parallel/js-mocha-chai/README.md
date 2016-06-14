@@ -43,11 +43,13 @@ Afterwards you can check the executed test in the [Sauce Labs Dashboard](https:/
 ### How is parallelism working in these examples?
 
 _For the initial status of the example_
+
 The tests are executed in several threads using the mocha-parallel-tests. This `npm` package grabs every JS file in
 the `test` folder and runs it in its own thread. In addition, you can change the `--max-parallel` value in the
 [package.json](https://github.com/diemol/frontend_testing/blob/master/running-in-parallel/js-mocha-chai/initial/package.json#L7) file to increase the number of threads if needed.
 
 _For the complete status of the example_
+
 When multiple browsers are used, the project is wrapped in several Grunt tasks and then executed in parallel.
 
 
