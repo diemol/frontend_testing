@@ -31,7 +31,7 @@ The examples are provided in Java with TestNG and JavaScript with Mocha + Chai.
 ## General Setup to run the examples
 
 ### Java
-
+_Only if you want to run the Java examples_
 * [Install Maven](https://maven.apache.org/install.html)
 * Or Install Maven with [Homebrew](http://brew.sh/)
 
@@ -40,12 +40,27 @@ The examples are provided in Java with TestNG and JavaScript with Mocha + Chai.
     ```
 
 ### JavaScript
-
+_Only if you want to run the JavaScript examples_
 * Install [Node.js](https://nodejs.org/en/)
 * Or Install Node.js with [Homebrew](http://brew.sh/)
 
     ```sh
     brew install node
     ```
+
+### Docker
+[docker-selenium](https://github.com/elgalu/docker-selenium) is used to run most of the examples.
+This means:
+* You need to have [docker](https://www.docker.com/) installed. Here are the instructions for [Mac](https://docs.docker.com/mac/), [Linux](https://docs.docker.com/linux/) and [Windows](https://docs.docker.com/windows/).
+* After installing docker, and before running the tests that use it, just run this command to start the docker-selenium container:
+
+  ```sh
+  docker run --rm -ti --name=grid -p 4444:24444 -p 5920:25900 -v /dev/shm:/dev/shm -p 6080:26080 -e NOVNC=true -e VNC_PASSWORD=hola elgalu/selenium:2.53.0r
+  ```
+  It will take longer the first time as the image is getting pulled. Afterwards, it should start in a few seconds. Whenever you have a problem with the container, just stop it and start it again.
+
+* When the container starts, you can see the Selenium Grid running at [http://localhost:4444/grid/console](http://localhost:4444/grid/console). **Attention**: If you are running Mac, `localhost` may not work, use `docker-machine ip default` to find out the correct IP for you.
+
+* If you want to see the browsers while the test is running, you can access the container with VNC through [http://localhost:6080/vnc.html](http://localhost:6080/vnc.html). The password is `hola`, it was set in the docker command. As in the previous point, check your docker IP.
 
 
