@@ -59,14 +59,10 @@ describe('Hotel Booking', function(done) {
         checkOutField.sendKeys(formatDate(checkOut));
         checkOutField.click();
 
-        // Click on search
-        var searchButton = driver.findElement(By.css("button.btn.btn-block.btn-action"));
-        searchButton.click();
+        // We can press the "Enter" key in the checkout date to already search
+        checkInField.sendKeys(webDriver.Key.ENTER);
 
         // In the results page, click on the first hotel
-        driver.executeScript("return {state: jQuery.active}").then(function(result) {
-            console.log(result.state);
-        });
         driver.findElements(By.css("button[type='submit'][class='btn btn-action']")).then(function(hotelsResult){
             hotelsResult[0].click();
         });
@@ -98,6 +94,13 @@ describe('Hotel Booking', function(done) {
 
         // Click on "Confirm this Booking"
         var confirmBooking = driver.findElement(By.name("guest"));
+        confirmBooking.isDisplayed().then(function(isDisplayed) {
+            if (!isDisplayed) {
+                var actions = new webDriver.ActionSequence(driver);
+                actions.mouseMove(confirmBooking);
+                actions.perform();
+            }
+        });
         confirmBooking.click();
 
         // Click on "Pay on Arrival", we need to wait a bit for the button to show up
