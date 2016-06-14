@@ -10,7 +10,7 @@ simple.
 
 The examples are provided in Java with TestNG and JavaScript with Mocha + Chai.
 
-### The code is structured as follows:
+## The code is structured as follows:
 * [first-test](https://github.com/diemol/frontend_testing/tree/master/first-test)
 
     A page is opened, the page title is retrieved, and finally an assertion of a expected value is done.
@@ -26,4 +26,24 @@ The examples are provided in Java with TestNG and JavaScript with Mocha + Chai.
 * [page-objects](https://github.com/diemol/frontend_testing/tree/master/page-objects)
 
     A final round up of the hotel booking example but now using the Page Object model/pattern, which is know as one of the best practices when doing Frontend Testing.
+
+
+## General Setup to run the examples
+
+### Java
+
+    * [Install Maven](https://maven.apache.org/install.html)
+    * Or Install Maven with [Homebrew](http://brew.sh/)
+    ```sh
+    brew install maven
+    ```
+
+### JavaScript
+
+    * Install [Node.js](https://nodejs.org/en/)
+    * Or Install Node.js with [Homebrew](http://brew.sh/)
+    ```sh
+    brew install node
+    ```
+
 
