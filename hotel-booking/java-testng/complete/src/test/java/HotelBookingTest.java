@@ -1,9 +1,12 @@
+import com.google.common.base.Function;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -16,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class HotelBookingTest {
 
@@ -68,22 +72,34 @@ public class HotelBookingTest {
         checkOutField.sendKeys(simpleDateFormat.format(checkOut));
         checkOutField.click();
 
-        // Click on search
-        WebElement searchButton = webDriver.findElement(By.cssSelector("button.btn.btn-block.btn-action"));
-        searchButton.click();
+        // We can press the "Enter" key in the checkout date to already search
+        checkOutField.sendKeys(Keys.ENTER);
 
         // In the results page, click on the first listed hotel
-        List<WebElement> hotelsResult = webDriver.findElements(By.cssSelector("button[type='submit'][class='btn btn-action']"));
+        final List<WebElement> hotelsResult = webDriver.findElements(By.cssSelector("button[type='submit'][class='btn btn-action']"));
         hotelsResult.get(0).click();
 
+        // The page is still loading sometimes and the previous click does not take us to the hotel detail page,
+        // so we need to click again
+        Wait<WebDriver> fluentWait = new FluentWait<WebDriver>(this.webDriver)
+                .withTimeout(10, TimeUnit.SECONDS)
+                .pollingEvery(2, TimeUnit.SECONDS)
+                .ignoring(IndexOutOfBoundsException.class);
+
+        WebElement firstBookNowButton = fluentWait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver webDriver) {
+                By bookNowButtonsLocator = By.cssSelector("button.btn.btn-action.btn-block.chk");
+                List<WebElement> bookNowButtons = webDriver.findElements(bookNowButtonsLocator);
+                if (bookNowButtons.size() == 0) {
+                    hotelsResult.get(0).click();
+                }
+                return bookNowButtons.get(0);
+            }
+        });
+
+
         // In the hotel detail page, click on the first "Book Now" button
-        List<WebElement> bookNowButtons = webDriver.findElements(By.cssSelector("button.btn.btn-action.btn-block.chk"));
-        if (!bookNowButtons.get(0).isDisplayed()) {
-            Actions actions = new Actions(webDriver);
-            actions.moveToElement(bookNowButtons.get(0));
-            actions.perform();
-        }
-        bookNowButtons.get(0).click();
+        firstBookNowButton.click();
 
         // Fill out the "Book as a Guest" fields
         webDriver.findElement(By.name("firstname")).sendKeys("John");
@@ -100,6 +116,11 @@ public class HotelBookingTest {
 
         // Click on "Confirm this Booking"
         WebElement confirmBooking = webDriver.findElement(By.name("guest"));
+        if (!confirmBooking.isDisplayed()) {
+            Actions actions = new Actions(webDriver);
+            actions.moveToElement(confirmBooking);
+            actions.perform();
+        }
         confirmBooking.click();
 
         // Click on "Pay on Arrival", we need to wait a bit for the button to show up
