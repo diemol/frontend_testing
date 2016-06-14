@@ -33,7 +33,8 @@ HotelSearchPage.prototype.setCheckoutDate = function(date) {
 };
 
 HotelSearchPage.prototype.search = function() {
-    this.driver.findElement(this.searchButton).click();
+    // this.driver.findElement(this.searchButton).click();
+    this.driver.findElement(this.checkOutField).sendKeys(webDriver.Key.ENTER);
 };
 
 HotelSearchPage.prototype.clickOnFirstHotel = function() {

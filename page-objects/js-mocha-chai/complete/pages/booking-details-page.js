@@ -11,9 +11,10 @@ BookingDetailsPage = function BookingDetailsPage(driver) {
     this.email = By.name("email");
     this.confirmEmail = By.name("confirmemail");
     this.address = By.name("address");
-    this.country = By.className("select2-chosen");
+    this.countryBox = By.className("select2-chosen");
+    this.country = By.css("input.select2-input");
     this.additionalNotes = By.name("additionalnotes");
-    this.confirmBooking = By.name("guest");
+    this.confirmBookingLocator = By.name("guest");
 };
 
 BookingDetailsPage.prototype.setFirstName = function(fName) {
@@ -45,13 +46,23 @@ BookingDetailsPage.prototype.setAdditionalNotes = function(notes) {
 };
 
 BookingDetailsPage.prototype.setCountry = function(country) {
+    this.driver.findElement(this.countryBox).click();
     this.driver.findElement(this.country).sendKeys(country);
     this.driver.findElement(this.country).sendKeys(webDriver.Key.ENTER);
 };
 
 
 BookingDetailsPage.prototype.confirmBooking = function() {
-    this.driver.findElements(this.confirmBooking).click();
+    var theDriver = this.driver;
+    var confirmBookingElement = this.driver.findElement(this.confirmBookingLocator);
+    confirmBookingElement.isDisplayed().then(function(isDisplayed) {
+        if (!isDisplayed) {
+            var actions = new webDriver.ActionSequence(theDriver);
+            actions.mouseMove(confirmBookingElement);
+            actions.perform();
+        }
+    });
+    confirmBookingElement.click();
     return new BookingConfirmationPage(this.driver);
 };
 
