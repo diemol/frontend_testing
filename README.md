@@ -59,6 +59,12 @@ This means:
   ```
   It will take longer the first time as the image is getting pulled. Afterwards, it should start in a few seconds. Whenever you have a problem with the container, just stop it and start it again.
 
+* _Optional_: If your docker machine does not run on `localhost`, export the docker machine IP
+  ```sh
+  docker-machine ip default
+  export DOCKER_MACHINE_HOST=<your docker machine IP>
+  ```
+
 * When the container starts, you can see the Selenium Grid running at [http://localhost:4444/grid/console](http://localhost:4444/grid/console). **Attention**: If you are running Mac, `localhost` may not work, use `docker-machine ip default` to find out the correct IP for you.
 
 * If you want to see the browsers while the test is running, you can access the container with VNC through [http://localhost:6080/vnc.html](http://localhost:6080/vnc.html). The password is `hola`, it was set in the docker command. As in the previous point, check your docker IP.
