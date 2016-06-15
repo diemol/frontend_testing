@@ -1,9 +1,12 @@
+import com.google.common.base.Function;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -16,6 +19,7 @@ import java.net.URL;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class HotelBookingTest {
 
@@ -43,6 +47,9 @@ public class HotelBookingTest {
     @Test
     public void bookHotelAndSelectPayAtHotelShouldLeaveBookingReserved() {
 
+        /*
+            PAGE OBJECTS CODE
+         */
         // Go to the homepage
         HotelSearchPage hotelSearchPage = new HotelSearchPage(webDriver);
         hotelSearchPage.visit();
@@ -62,13 +69,14 @@ public class HotelBookingTest {
         // Click on the first listed hotel
         hotelSearchPage.clickOnFirstHotel();
 
+
+        /*
+            NON-PAGE OBJECTS CODE
+         */
+
         // In the hotel detail page, click on the first "Book Now" button
-        List<WebElement> bookNowButtons = webDriver.findElements(By.cssSelector("button.btn.btn-action.btn-block.chk"));
-        if (!bookNowButtons.get(0).isDisplayed()) {
-            Actions actions = new Actions(webDriver);
-            actions.moveToElement(bookNowButtons.get(0));
-            actions.perform();
-        }
+        By bookNowButtonsLocator = By.cssSelector("button.btn.btn-action.btn-block.chk");
+        List<WebElement> bookNowButtons = webDriver.findElements(bookNowButtonsLocator);
         bookNowButtons.get(0).click();
 
         // Fill out the "Book as a Guest" fields
@@ -86,6 +94,11 @@ public class HotelBookingTest {
 
         // Click on "Confirm this Booking"
         WebElement confirmBooking = webDriver.findElement(By.name("guest"));
+        if (!confirmBooking.isDisplayed()) {
+            Actions actions = new Actions(webDriver);
+            actions.moveToElement(confirmBooking);
+            actions.perform();
+        }
         confirmBooking.click();
 
         // Click on "Pay on Arrival", we need to wait a bit for the button to show up
@@ -95,6 +108,7 @@ public class HotelBookingTest {
         payOnArrivalButton.click();
 
         // Accept the popup message
+        wait.until(ExpectedConditions.alertIsPresent());
         webDriver.switchTo().alert().accept();
 
         // Assert the payment status, to be reserved
