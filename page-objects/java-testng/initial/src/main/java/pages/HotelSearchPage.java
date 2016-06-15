@@ -1,10 +1,12 @@
 package pages;
 
+import com.google.common.base.Function;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -60,11 +62,23 @@ public class HotelSearchPage {
     }
 
     public void search() {
-        searchButton.click();
+        // We can press the "Enter" key in the checkout date to already search
+        checkOutField.sendKeys(Keys.ENTER);
+        // searchButton.click();
     }
 
     public void clickOnFirstHotel() {
-        hotelsResult.get(0).click();
+        final String currentUrl = this.webDriver.getCurrentUrl();
+        WebDriverWait wait = new WebDriverWait(this.webDriver, 10);
+        wait.until(new Function<WebDriver, Boolean>() {
+            public Boolean apply(WebDriver webDriver) {
+                if (webDriver.getCurrentUrl().equalsIgnoreCase(currentUrl)) {
+                    hotelsResult.get(0).click();
+                    return false;
+                }
+                return true;
+            }
+        });
     }
 
     private void setDate(WebElement webElement, Date date) {
