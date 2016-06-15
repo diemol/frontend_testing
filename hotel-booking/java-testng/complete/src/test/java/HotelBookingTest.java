@@ -75,31 +75,25 @@ public class HotelBookingTest {
         // We can press the "Enter" key in the checkout date to already search
         checkOutField.sendKeys(Keys.ENTER);
 
-        // In the results page, click on the first listed hotel
+        // In the results page, click on the first listed hotel and wait for the page to change
         final List<WebElement> hotelsResult = webDriver.findElements(By.cssSelector("button[type='submit'][class='btn btn-action']"));
-        hotelsResult.get(0).click();
-
-        // The page is still loading sometimes and the previous click does not take us to the hotel detail page,
-        // so we need to click again
-        Wait<WebDriver> fluentWait = new FluentWait<WebDriver>(this.webDriver)
-                .withTimeout(10, TimeUnit.SECONDS)
-                .pollingEvery(2, TimeUnit.SECONDS)
-                .ignoring(IndexOutOfBoundsException.class);
-
-        WebElement firstBookNowButton = fluentWait.until(new Function<WebDriver, WebElement>() {
-            public WebElement apply(WebDriver webDriver) {
-                By bookNowButtonsLocator = By.cssSelector("button.btn.btn-action.btn-block.chk");
-                List<WebElement> bookNowButtons = webDriver.findElements(bookNowButtonsLocator);
-                if (bookNowButtons.size() == 0) {
+        final String currentUrl = webDriver.getCurrentUrl();
+        WebDriverWait wait = new WebDriverWait(webDriver, 10);
+        wait.until(new Function<WebDriver, Boolean>() {
+            public Boolean apply(WebDriver webDriver) {
+                if (webDriver.getCurrentUrl().equalsIgnoreCase(currentUrl)) {
                     hotelsResult.get(0).click();
+                    return false;
                 }
-                return bookNowButtons.get(0);
+                return true;
             }
         });
 
 
         // In the hotel detail page, click on the first "Book Now" button
-        firstBookNowButton.click();
+        By bookNowButtonsLocator = By.cssSelector("button.btn.btn-action.btn-block.chk");
+        List<WebElement> bookNowButtons = webDriver.findElements(bookNowButtonsLocator);
+        bookNowButtons.get(0).click();
 
         // Fill out the "Book as a Guest" fields
         webDriver.findElement(By.name("firstname")).sendKeys("John");
@@ -124,12 +118,13 @@ public class HotelBookingTest {
         confirmBooking.click();
 
         // Click on "Pay on Arrival", we need to wait a bit for the button to show up
-        WebDriverWait wait = new WebDriverWait(webDriver, 10);
+        // WebDriverWait wait = new WebDriverWait(webDriver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[class*='btn-arrival']")));
         WebElement payOnArrivalButton = webDriver.findElement(By.cssSelector("button[class*='btn-arrival']"));
         payOnArrivalButton.click();
 
         // Accept the popup message
+        wait.until(ExpectedConditions.alertIsPresent());
         webDriver.switchTo().alert().accept();
 
         // Assert the payment status, to be reserved
