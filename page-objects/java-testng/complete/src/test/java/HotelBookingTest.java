@@ -2,6 +2,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -77,8 +78,7 @@ public class HotelBookingTest {
 
         // Confirm the booking and assert the payment state
         bookingConfirmationPage.clickPayOnArrival();
-        Assert.assertEquals(bookingConfirmationPage.getPaymentStatus(), "Reserved", "Payment status should be " +
-                "Reserved.");
+        Assert.assertTrue(bookingConfirmationPage.isBookingReserved(), "Booking should be reserved.");
     }
 
     // Method to get a future date (useful for the checkin and checkout dates)

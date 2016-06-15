@@ -35,6 +35,9 @@ public class BookingDetailsPage {
     @FindBy(name = "guest")
     private WebElement confirmBooking;
 
+    @FindBy(className = "select2-chosen")
+    private WebElement countryBox;
+
     @FindBy(css = "input.select2-input")
     private WebElement country;
 
@@ -72,6 +75,7 @@ public class BookingDetailsPage {
     }
 
     public void setCountry(String country) {
+        this.countryBox.click();
         this.country.sendKeys(country);
         this.country.sendKeys(Keys.RETURN);
     }

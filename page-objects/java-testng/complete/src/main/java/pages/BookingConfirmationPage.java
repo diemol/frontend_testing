@@ -46,6 +46,16 @@ public class BookingConfirmationPage {
         });
     }
 
+    public boolean isBookingReserved() {
+        try {
+            WebDriverWait wait = new WebDriverWait(webDriver, 10);
+            wait.until(ExpectedConditions.invisibilityOfElementWithText(paymentStatusLocator, "Unpaid"));
+        } catch (Exception e) {
+            return false;
+        }
+        return "Reserved".equalsIgnoreCase(this.getPaymentStatus());
+    }
+
     public void clickPayOnArrival() {
         payOnArrivalButton.click();
         webDriver.switchTo().alert().accept();
