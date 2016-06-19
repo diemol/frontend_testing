@@ -1,0 +1,106 @@
+#!/usr/bin/env bash
+# Runs one of the tests scenarios
+
+# set -e: exit asap if a command exits with a non-zero status
+# set -x: print each command right before it is executed
+set -xe
+
+# echo fn that outputs to stderr http://stackoverflow.com/a/2990533/511069
+echoerr() {
+  cat <<< "$@" 1>&2;
+}
+
+# print error and exit
+die () {
+  echoerr "ERROR: $1"
+  # if $2 is defined AND NOT EMPTY, use $2; otherwise, set to "3"
+  errnum=${2-3}
+  exit $errnum
+}
+
+# Required params
+[ -z "${1}" ] && die "Need first argument to be the test name, i.e. scenario directory"
+test_name=${1}
+[ -z "${2}" ] && die "Need second argument to be the test type (basic/advan)"
+test_type=${2}
+[ -z "${3}" ] && die "Need third argument test language (java/js)"
+test_lang=${3}
+
+echo "#================================"
+echo "# Scenario ${test_name}"
+echo "#================================"
+
+if [ "${VIDEO}" = "true" ]; then
+  echo "Starting video recording..."
+  if docker exec grid stop-video >/dev/null 2>&1; then
+    # backup
+    mkdir -p ./CI/videos/bup/
+    docker cp grid:/videos/. ./CI/videos/bup/
+    docker exec grid rm -f /videos/*
+  fi
+  docker exec grid start-video
+fi
+
+echo "Starting ${test_lang} tests..."
+cd ${test_name}
+
+if [ "${test_lang}" = "java" ]; then
+  java -version
+  mvn --version
+  cd java-testng
+
+  if [ "${test_type}" = "basic" ]; then
+    mvn test
+  elif [ "${test_type}" = "advan" ]; then
+    echo "#========================="
+    echo "# ${test_name} - Initial"
+    echo "#========================="
+    cd initial
+    mvn test
+
+    echo "#========================="
+    echo "# ${test_name} - Complete"
+    echo "#========================="
+    cd ../complete/
+    mvn test
+    # back to java-testng dir
+    cd ..
+  else
+    die "Fatal, test_type is not either 'basic' nor 'advan'"
+  fi
+elif [ "${test_lang}" = "js" ]; then
+  node --version
+  cd js-mocha-chai
+
+  if [ "${test_type}" = "basic" ]; then
+    npm install
+    npm test
+  elif [ "${test_type}" = "advan" ]; then
+    cd initial
+    npm install
+    npm test
+    cd ../complete/
+    npm install
+    npm test
+    # back to js-mocha-chai dir
+    cd ..
+  else
+    die "Fatal, test_type is not either 'basic' nor 'advan'"
+  fi
+fi
+
+# back to root dir
+cd ../..
+
+if [ "${VIDEO}" = "true" ]; then
+  echo "Ending video recording..."
+  docker exec grid stop-video
+  mkdir -p ./CI/videos
+  test_id="${TRAVIS_BUILD_NUMBER}_${test_name}_${test_lang}"
+  docker cp grid:/videos/. ./CI/videos/${test_id}/
+  cd ./CI/videos/${test_id}/
+  rename "s/^test(.*)/${test_id}\$1/" *.mkv
+  mv *.mkv ..
+  cd ../../..
+  docker exec grid rm -f /videos/*
+fi

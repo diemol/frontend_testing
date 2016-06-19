@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# set -e: exit asap if a command exits with a non-zero status
+set -e
+
+echo "#=================="
+echo "# Archive artifacts"
+echo "#=================="
+# pending to upload to S3 bucket
+ls -la ./CI/videos

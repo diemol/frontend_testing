@@ -1,4 +1,7 @@
 # Frontend Testing Workshop - Code Examples
+
+[![Build Status](https://travis-ci.org/elgalu/frontend_testing.svg?branch=master)](https://travis-ci.org/elgalu/frontend_testing)
+
 This repository contains different examples that are used during a basic Frontend Testing workshop.
 
 The code was written in general in a simple way, without any frameworks or external tools that could hide the basic
@@ -55,7 +58,7 @@ This means:
 * After installing docker, and before running the tests that use it, just run this command to start the docker-selenium container:
 
   ```sh
-  docker run --rm -ti --name=grid -p 4444:24444 -p 5920:25900 -v /dev/shm:/dev/shm -p 6080:26080 -e NOVNC=true -e VNC_PASSWORD=hola elgalu/selenium:2.53.0r
+  docker run --rm -ti --name=grid -p 4444:24444 -p 5920:25900 -v /dev/shm:/dev/shm -p 6080:26080 -e NOVNC=true -e VNC_PASSWORD=hola elgalu/selenium
   ```
   It will take longer the first time as the image is getting pulled. Afterwards, it should start in a few seconds. Whenever you have a problem with the container, just stop it and start it again.
 
