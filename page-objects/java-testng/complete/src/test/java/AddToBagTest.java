@@ -5,9 +5,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.ArticleDetailPage;
+import pages.BagPage;
+import pages.HomePage;
+import pages.SearchResults;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -48,17 +53,31 @@ public class AddToBagTest {
 
         // Go to the homepage
         LOG.info("Loading https://www.zalando.de/...");
-        webDriver.get("https://www.zalando.de/");
+        HomePage homePage = new HomePage(webDriver);
+        homePage.visit();
 
         // Type "Nike" in the search field
         LOG.info("Typing Nike in the search field...");
-        WebElement searchField = webDriver.findElement(By.id("searchContent"));
-        searchField.sendKeys("Nike");
-        searchField.submit();
+        SearchResults searchResultsPage = homePage.search("Nike");
 
         // Click on the first article
         LOG.info("Clicking on the first article...");
-        List<WebElement> articlesList = webDriver.findElements(By.className("catalogArticlesList_productBox"));
-        articlesList.get(0).click();
+        ArticleDetailPage articleDetailPage = searchResultsPage.clickOnFirstArticle();
+
+        // Click on the size select drop down
+        LOG.info("Selecting the first available size...");
+        articleDetailPage.selectFirstAvailableSize();
+
+        // Get article name for further assertion
+        String expectedArticleName = articleDetailPage.getArticleName();
+
+        // Add to bag and go to it
+        LOG.info("Adding to bag and going to bag page...");
+        articleDetailPage.addToBag();
+        BagPage bagPage = articleDetailPage.goToBag();
+
+        // Assert article's name and price
+        String actualArticleName = bagPage.getArticleName();
+        Assert.assertEquals(actualArticleName, expectedArticleName, "Article name is different.");
     }
 }

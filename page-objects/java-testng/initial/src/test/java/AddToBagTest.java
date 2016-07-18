@@ -5,9 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.HomePage;
+import pages.SearchResults;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -46,19 +49,50 @@ public class AddToBagTest {
     @Test
     public void searchArticleAndAddItToBag() throws InterruptedException {
 
+        /*
+            PAGE OBJECTS CODE
+         */
+
         // Go to the homepage
         LOG.info("Loading https://www.zalando.de/...");
-        webDriver.get("https://www.zalando.de/");
+        HomePage homePage = new HomePage(webDriver);
+        homePage.visit();
 
         // Type "Nike" in the search field
         LOG.info("Typing Nike in the search field...");
-        WebElement searchField = webDriver.findElement(By.id("searchContent"));
-        searchField.sendKeys("Nike");
-        searchField.submit();
+        SearchResults searchResultsPage = homePage.search("Nike");
 
         // Click on the first article
         LOG.info("Clicking on the first article...");
-        List<WebElement> articlesList = webDriver.findElements(By.className("catalogArticlesList_productBox"));
-        articlesList.get(0).click();
+        searchResultsPage.clickOnFirstArticle();
+
+        // Click on the size select drop down
+        LOG.info("Selecting the first available size...");
+        WebElement sizeSelect = webDriver.findElement(By.id("sizeSelect"));
+        sizeSelect.click();
+
+        /*
+            NON-PAGE OBJECTS CODE
+         */
+
+        // Get article name for further assertion
+        String articleBrand = webDriver.findElement(By.cssSelector("span[itemprop='brand']")).getText();
+        String articleName = webDriver.findElement(By.cssSelector("span[itemprop='name']")).getText();
+        String expectedArticleName = articleBrand + " " + articleName;
+
+        // Select the first available size from the list
+        List<WebElement> availableSizes = webDriver.findElements(By.cssSelector("li[class='available sizeLine']"));
+        availableSizes.get(0).click();
+
+        // Add to bag and go to it
+        LOG.info("Adding to bag and going to bag page...");
+        WebElement addToBagButton = webDriver.findElement(By.id("ajaxAddToCartBtn"));
+        addToBagButton.click();
+        WebElement goToBagButton = webDriver.findElement(By.name("head.text:cart.x:4.y:1"));
+        goToBagButton.click();
+
+        // Assert article's name and price
+        String actualArticleName = webDriver.findElement(By.name("cart.product.name")).getText();
+        Assert.assertEquals(actualArticleName, expectedArticleName, "Article name is different.");
     }
 }
