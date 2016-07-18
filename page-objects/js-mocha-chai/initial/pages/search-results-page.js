@@ -1,28 +1,23 @@
-/*
- package pages;
+var webDriver = require('selenium-webdriver');
+var By = webDriver.By;
 
- import org.openqa.selenium.WebDriver;
- import org.openqa.selenium.WebElement;
- import org.openqa.selenium.support.FindBy;
- import org.openqa.selenium.support.PageFactory;
+// var SearchResultsPage = require('./search-results-page.js');
 
- import java.util.List;
+SearchResultsPage = function SearchResultsPage(driver) {
+    this.driver = driver;
+    this.articlesListLocator = By.className("catalogArticlesList_productBox");
+};
 
- public class SearchResults {
+SearchResultsPage.prototype.clickOnFirstArticle = function() {
+    this.driver.findElements(this.articlesListLocator).then(function(articlesList){
+        articlesList[0].click();
+    });
+};
 
- private WebDriver webDriver;
+SearchResultsPage.prototype.search = function(searchText) {
+    this.driver.findElement(this.searchField).sendKeys(searchText);
+    this.driver.findElement(this.searchField).submit();
+    // return new SearchResultsPage(this.driver);
+};
 
- @FindBy(className = "catalogArticlesList_productBox")
- private List<WebElement> articlesList;
-
- public SearchResults(WebDriver webDriver) {
- this.webDriver = webDriver;
- PageFactory.initElements(this.webDriver, this);
- }
-
- public void clickOnFirstArticle() {
- articlesList.get(0).click();
- }
- }
-
- */
+module.exports = SearchResultsPage;
