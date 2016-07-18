@@ -21,9 +21,9 @@ public class HomePage {
         this.webDriver.get("https://www.zalando.de/");
     }
 
-    public SearchResults search(String searchText) {
+    public SearchResultsPage search(String searchText) {
         searchField.sendKeys(searchText);
         searchField.submit();
-        return new SearchResults(this.webDriver);
+        return new SearchResultsPage(this.webDriver);
     }
 }

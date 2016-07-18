@@ -1,7 +1,5 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -12,11 +10,10 @@ import org.testng.annotations.Test;
 import pages.ArticleDetailPage;
 import pages.BagPage;
 import pages.HomePage;
-import pages.SearchResults;
+import pages.SearchResultsPage;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
 import java.util.logging.Logger;
 
 public class AddToBagTest {
@@ -58,7 +55,7 @@ public class AddToBagTest {
 
         // Type "Nike" in the search field
         LOG.info("Typing Nike in the search field...");
-        SearchResults searchResultsPage = homePage.search("Nike");
+        SearchResultsPage searchResultsPage = homePage.search("Nike");
 
         // Click on the first article
         LOG.info("Clicking on the first article...");

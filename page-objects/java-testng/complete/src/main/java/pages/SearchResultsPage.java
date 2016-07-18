@@ -7,15 +7,16 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class SearchResults {
+public class SearchResultsPage {
 
     @SuppressWarnings("FieldCanBeLocal")
     private WebDriver webDriver;
 
+    @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
     @FindBy(className = "catalogArticlesList_productBox")
     private List<WebElement> articlesList;
 
-    public SearchResults(WebDriver webDriver) {
+    public SearchResultsPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         PageFactory.initElements(this.webDriver, this);
     }
