@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# set -e: exit asap if a command exits with a non-zero status
+# set -x: print each command right before it is executed
+set -xe
+
+docker run --name=grid -d -v /dev/shm:/dev/shm \
+  -p 4444:24444 -p 5920:25900 -p 6080:26080 \
+  -e NOVNC=true -e VNC_PASSWORD=hola \
+  elgalu/selenium
+
+docker exec grid wait_all_done 40s
+docker exec grid errors || true
+docker logs grid

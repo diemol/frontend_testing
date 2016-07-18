@@ -1,4 +1,7 @@
 # Frontend Testing Workshop - Code Examples
+
+[![Build Status](https://travis-ci.org/elgalu/frontend_testing.svg?branch=master)](https://travis-ci.org/elgalu/frontend_testing)
+
 This repository contains different examples that are used during a basic Frontend Testing workshop.
 
 The code was written in general in a simple way, without any frameworks or external tools that could hide the basic

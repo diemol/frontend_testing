@@ -1,0 +1,30 @@
+sudo: required
+
+services:
+  - docker
+
+language: node_js
+node_js:
+  - "5.8"
+
+install:
+  - ./CI/install
+
+env:
+  - TEST_NAME="first-test"          TEST_LANG="java" TEST_TYPE="basic" VIDEO="true"
+  - TEST_NAME="first-test"          TEST_LANG="js"   TEST_TYPE="basic" VIDEO="true"
+  - TEST_NAME="user-registration"   TEST_LANG="java" TEST_TYPE="basic" VIDEO="true"
+  - TEST_NAME="user-registration"   TEST_LANG="js"   TEST_TYPE="basic" VIDEO="true"
+  - TEST_NAME="hotel-booking"       TEST_LANG="java" TEST_TYPE="advan" VIDEO="true"
+  - TEST_NAME="hotel-booking"       TEST_LANG="js"   TEST_TYPE="advan" VIDEO="true"
+  - TEST_NAME="running-in-parallel" TEST_LANG="java" TEST_TYPE="advan" VIDEO="false"
+  - TEST_NAME="running-in-parallel" TEST_LANG="js"   TEST_TYPE="advan" VIDEO="false"
+  - TEST_NAME="page-objects"        TEST_LANG="java" TEST_TYPE="advan" VIDEO="true"
+  - TEST_NAME="page-objects"        TEST_LANG="js"   TEST_TYPE="advan" VIDEO="true"
+
+script:
+  - ./CI/script
+
+after_script:
+  - ./CI/script_archive
+  - ./CI/after_script
