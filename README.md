@@ -20,6 +20,9 @@ The examples are provided in Java with TestNG and JavaScript with Mocha + Chai.
 * [hotel-booking](https://github.com/diemol/frontend_testing/tree/master/hotel-booking)
 
     This is an example where a guest user books a hotel on a website.
+* [add-to-bag](https://github.com/diemol/frontend_testing/tree/master/add-to-bag)
+
+    This is an example where a guest searches for a brand and puts an article in the bag.
 * [running-in-parallel](https://github.com/diemol/frontend_testing/tree/master/running-in-parallel)
 
     After having tests working, a natural step is to try to execute all of them in less time. Some simple examples where a page is loaded are executed in parallel.
@@ -55,7 +58,7 @@ This means:
 * After installing docker, and before running the tests that use it, just run this command to start the docker-selenium container:
 
   ```sh
-  docker run --rm -ti --name=grid -p 4444:24444 -p 5920:25900 -v /dev/shm:/dev/shm -p 6080:26080 -e NOVNC=true -e VNC_PASSWORD=hola elgalu/selenium:2.53.0r
+  docker run --rm -ti --name=grid -p 4444:24444 -p 5920:25900 -v /dev/shm:/dev/shm -p 6080:26080 -e NOVNC=true -e VNC_PASSWORD=hola elgalu/selenium
   ```
   It will take longer the first time as the image is getting pulled. Afterwards, it should start in a few seconds. Whenever you have a problem with the container, just stop it and start it again.
 
