@@ -30,7 +30,7 @@ describe('Add to Bag', function(done) {
         driver.manage().window().maximize().then(done);
     });
 
-    it('Add article to bag and assert title and price', function(done) {
+    it('Add article to bag and assert title', function(done) {
 
         // Go to the homepage
         driver.get("https://www.zalando.de/").then(function() {
@@ -75,11 +75,6 @@ describe('Add to Bag', function(done) {
                     availableSizesActive[0].click();
                 });
             }
-        });
-
-        var expectedArticlePrice = "";
-        driver.findElement(By.id("articlePrice")).getText().then(function(text) {
-            expectedArticlePrice = text;
         });
 
         // Add to bag and go to it

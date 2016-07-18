@@ -15,6 +15,7 @@ public class ArticleDetailPage {
     @FindBy(id = "sizeSelect")
     private WebElement sizeSelect;
 
+    @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
     @FindBy(css = "li[class='available sizeLine']")
     private List<WebElement> availableSizes;
 
