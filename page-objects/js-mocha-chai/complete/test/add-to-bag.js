@@ -43,45 +43,27 @@ describe('Add to Bag', function(done) {
         var searchResultsPage = homePage.search("Nike");
 
         // Click on the first article
-        searchResultsPage.clickOnFirstArticle();
+        var articleDetailPage = searchResultsPage.clickOnFirstArticle();
 
         // Click on the size select drop down
-        var sizeSelect = driver.findElement(By.id("sizeSelect"));
-        sizeSelect.click().then(function() {
-            console.log("Selecting the first available size...");
-        });
+        articleDetailPage.selectFirstAvailableSize();
 
         // Get article name for further assertion
         var expectedArticleBrand = "";
-        driver.findElement(By.css("span[itemprop='brand']")).getText().then(function(text) {
-            expectedArticleBrand = text;
+        articleDetailPage.getArticleBrand().then(function(brand) {
+            expectedArticleBrand = brand;
         });
         var expectedArticleName = "";
-        driver.findElement(By.css("span[itemprop='name']")).getText().then(function(text) {
-            expectedArticleName = text;
-        });
-
-        // Select the first available size from the list
-        driver.findElements(By.css("li[class='available sizeLine']")).then(function(availableSizes){
-            if (availableSizes.length > 0) {
-                availableSizes[0].click();
-            } else {
-                driver.findElements(By.css("li[class='available sizeLine active']")).then(function(availableSizesActive){
-                    availableSizesActive[0].click();
-                });
-            }
+        articleDetailPage.getArticleName().then(function(name) {
+            expectedArticleName = name;
         });
 
         // Add to bag and go to it
-        var addToBagButton = driver.findElement(By.id("ajaxAddToCartBtn"));
-        addToBagButton.click();
-        var goToBagButton = driver.findElement(By.name("head.text:cart.x:4.y:1"));
-        goToBagButton.click().then(function() {
-            console.log("Adding to bag and going to bag page...");
-        });
+        articleDetailPage.addToBag();
+        var bagPage = articleDetailPage.goToBag();
 
         // Assert article's name
-        driver.findElement(By.name("cart.product.name")).getText().then(function(actualArticleName) {
+        bagPage.getArticleName().then(function(actualArticleName) {
             var expectedArticleFullName = expectedArticleBrand + " " + expectedArticleName;
             expect(actualArticleName).to.equal(expectedArticleFullName, "Article name is different.");
             done();
