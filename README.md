@@ -1,5 +1,6 @@
 # Frontend Testing Workshop - Code Examples
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a557913c563a42a3a6ed731f6b56bf1e)](https://www.codacy.com/app/diemol_3/frontend_testing?utm_source=github.com&utm_medium=referral&utm_content=diemol/frontend_testing&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/diemol/frontend_testing.svg?branch=master)](https://travis-ci.org/diemol/frontend_testing)
 
 This repository contains different examples that are used during a basic Frontend Testing workshop.
