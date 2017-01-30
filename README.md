@@ -60,6 +60,12 @@ most of the supported [platforms](https://www.docker.com/products/docker).
   ```
   
   This will check for the latest images and ask for missing dependencies.
+  
+  To stop Zalenium when you are done testing, you can.
+
+  ```sh
+  curl -sSL https://raw.githubusercontent.com/dosel/t/i/p | bash -s stop
+  ```
 
 * After getting the message `Zalenium in docker started!`, head to [http://localhost:4444/grid/console](http://localhost:4444/grid/console).
 
