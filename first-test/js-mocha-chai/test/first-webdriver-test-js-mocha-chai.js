@@ -2,19 +2,17 @@
 var expect = require('chai').expect;
 
 // Selenium Grid url
-var dockerMachineHost = (typeof process.env.DOCKER_MACHINE_HOST === "undefined") ?
-    "localhost" : process.env.DOCKER_MACHINE_HOST;
-var seleniumGridUrl = 'http://' + dockerMachineHost + ':4444/wd/hub';
+var seleniumGridUrl = 'http://localhost:4444/wd/hub';
 
 // Create a new instance of WebDriver
 var webDriver = require('selenium-webdriver');
 
 describe('First WebDriver Test in JavaScript and Mocha', function() {
     // Global timeout for Mocha to wait for the callback function to be invoked
-    this.timeout(30000);
+    this.timeout(60000);
 
     // Test to check the page title
-    it('Page title should be Travel Business Partner', function(done) {
+    it('Page title should be Schuhe & Mode online kaufen | ZALANDO Online Shop', function(done) {
 
         var capabilities = new webDriver.Capabilities().
         set(webDriver.Capability.BROWSER_NAME, webDriver.Browser.CHROME).
@@ -30,11 +28,11 @@ describe('First WebDriver Test in JavaScript and Mocha', function() {
         driver.manage().window().maximize();
 
         // Go to PHPTravels website
-        driver.get("http://phptravels.net/");
+        driver.get("https://www.zalando.de/");
 
         // Assert the title to the expected value
         driver.getTitle().then(function(title) {
-            expect(title).to.equal('Travel Business Partner');
+            expect(title).to.equal('Schuhe & Mode online kaufen | ZALANDO Online Shop');
         });
 
         // Quitting the browser and invoking the callback function to tell Mocha that we are done

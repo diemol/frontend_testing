@@ -6,16 +6,11 @@ Check your [Java](https://github.com/diemol/frontend_testing#java) and [Docker](
 
 #### Steps to run it:
 
-1. Clone the repo:
+1. Clone the repo and go to the folder to execute the examples:
 
     ```sh
     git clone https://github.com/diemol/frontend_testing.git
-    cd frontend_testing
-    ```
-1. Change directory to execute the examples:
-
-    ```sh
-    cd first-test/java-testng
+    cd frontend_testing/first-test/java-testng
     ```
 1. Execute the code
 

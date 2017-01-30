@@ -6,16 +6,11 @@ Check your [JavaScript](https://github.com/diemol/frontend_testing#javascript) a
 
 ### Steps to run it:
 
-1. Clone the repo:
+1. Clone the repo and go to the folder to execute the examples:
 
     ```sh
     git clone https://github.com/diemol/frontend_testing
-    cd frontend_testing
-    ```
-1. Change directory to:
-
-    ```sh
-    cd first-test/js-mocha-chai
+    cd frontend_testing/first-test/js-mocha-chai
     ```
 1. Install Node dependencies (Selenium WebDriver, Mocha, and Chai):
 

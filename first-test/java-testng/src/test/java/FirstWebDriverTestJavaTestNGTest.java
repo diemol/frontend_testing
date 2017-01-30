@@ -12,9 +12,7 @@ import java.net.URL;
 public class FirstWebDriverTestJavaTestNGTest {
 
     // Setting the url for the WebDriver
-    public static final String DOCKER_MACHINE_HOST = (System.getenv("DOCKER_MACHINE_HOST") == null) ?
-            "localhost" : System.getenv("DOCKER_MACHINE_HOST");
-    public static final String URL = String.format("http://%s:4444/wd/hub", DOCKER_MACHINE_HOST);
+    private static final String URL = "http://localhost:4444/wd/hub";
 
     @Test
     public void checkPHPTravelsPageTitle() throws MalformedURLException {
@@ -28,10 +26,11 @@ public class FirstWebDriverTestJavaTestNGTest {
         driver.manage().window().maximize();
 
         // Go to PHPTravels website
-        driver.get("http://phptravels.net/");
+        driver.get("https://www.zalando.de/");
 
         // Assert that the title is the expected one
-        Assert.assertEquals(driver.getTitle(), "Travel Business Partner", "Page title is not the expected one");
+        Assert.assertEquals(driver.getTitle(), "Schuhe & Mode online kaufen | ZALANDO Online Shop",
+                "Page title is not the expected one");
 
         // Close the browser
         driver.quit();
