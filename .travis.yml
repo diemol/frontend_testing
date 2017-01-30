@@ -13,8 +13,6 @@ install:
 env:
   - TEST_NAME="first-test"          TEST_LANG="java" TEST_TYPE="basic" VIDEO="true"
   - TEST_NAME="first-test"          TEST_LANG="js"   TEST_TYPE="basic" VIDEO="true"
-  - TEST_NAME="user-registration"   TEST_LANG="java" TEST_TYPE="basic" VIDEO="true"
-  - TEST_NAME="user-registration"   TEST_LANG="js"   TEST_TYPE="basic" VIDEO="true"
   - TEST_NAME="add-to-bag"          TEST_LANG="java" TEST_TYPE="advan" VIDEO="true"
   - TEST_NAME="add-to-bag"          TEST_LANG="js"   TEST_TYPE="advan" VIDEO="true"
   - TEST_NAME="page-objects"        TEST_LANG="java" TEST_TYPE="advan" VIDEO="true"

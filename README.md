@@ -17,12 +17,6 @@ The examples are provided in Java with TestNG and JavaScript with Mocha + Chai.
 * [first-test](https://github.com/diemol/frontend_testing/tree/master/first-test)
 
     A page is opened, the page title is retrieved, and finally an assertion of a expected value is done.
-* [user-registration](https://github.com/diemol/frontend_testing/tree/master/user-registration)
-
-    This is a simple example where a user gets registered on a website.
-* [hotel-booking](https://github.com/diemol/frontend_testing/tree/master/hotel-booking)
-
-    This is an example where a guest user books a hotel on a website.
 * [add-to-bag](https://github.com/diemol/frontend_testing/tree/master/add-to-bag)
 
     This is an example where a guest searches for a brand and puts an article in the bag.
@@ -55,24 +49,21 @@ _Only if you want to run the JavaScript examples_
     ```
 
 ### Docker
-[docker-selenium](https://github.com/elgalu/docker-selenium) is used to run most of the examples.
+[Zalenium](https://github.com/zalando/zalenium) is used to run most of the examples.
 This means:
-* You need to have [docker](https://www.docker.com/) installed. Here are the instructions for [Mac](https://docs.docker.com/mac/), [Linux](https://docs.docker.com/linux/) and [Windows](https://docs.docker.com/windows/).
-* After installing docker, and before running the tests that use it, just run this command to start the docker-selenium container:
+* You need to have [docker](https://www.docker.com/) installed, version >= 1.11.1. Here are the instructions for 
+most of the supported [platforms](https://www.docker.com/products/docker).
+* After installing docker, just run this command to start Zalenium:
 
   ```sh
-  docker run --rm -ti --name=grid -p 4444:24444 -p 5920:25900 -v /dev/shm:/dev/shm -p 6080:26080 -e NOVNC=true -e VNC_PASSWORD=hola elgalu/selenium
+  curl -sSL https://raw.githubusercontent.com/dosel/t/i/p | bash -s start
   ```
-  It will take longer the first time as the image is getting pulled. Afterwards, it should start in a few seconds. Whenever you have a problem with the container, just stop it and start it again.
+  
+  This will check for the latest images and ask for missing dependencies.
 
-* _Optional_: If your docker machine does not run on `localhost`, export the docker machine IP
-  ```sh
-  docker-machine ip default
-  export DOCKER_MACHINE_HOST=<your docker machine IP>
-  ```
+* After getting the message `Zalenium in docker started!`, head to [http://localhost:4444/grid/console](http://localhost:4444/grid/console).
 
-* When the container starts, you can see the Selenium Grid running at [http://localhost:4444/grid/console](http://localhost:4444/grid/console). **Attention**: If you are running Mac, `localhost` may not work, use `docker-machine ip default` to find out the correct IP for you.
-
-* If you want to see the browsers while the test is running, you can access the container with VNC through [http://localhost:6080/vnc.html](http://localhost:6080/vnc.html). The password is `hola`, it was set in the docker command. As in the previous point, check your docker IP.
+* If you want to see the browsers while the test is running, you can access the container with VNC through 
+[http://localhost:4444/grid/admin/live](http://localhost:4444/grid/admin/live). 
 
 
