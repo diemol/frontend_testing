@@ -5,7 +5,7 @@ services:
 
 language: node_js
 node_js:
-  - "5.8"
+  - "7.4"
 
 install:
   - ./CI/install
@@ -13,10 +13,6 @@ install:
 env:
   - TEST_NAME="first-test"          TEST_LANG="java" TEST_TYPE="basic" VIDEO="true"
   - TEST_NAME="first-test"          TEST_LANG="js"   TEST_TYPE="basic" VIDEO="true"
-  - TEST_NAME="add-to-bag"          TEST_LANG="java" TEST_TYPE="advan" VIDEO="true"
-  - TEST_NAME="add-to-bag"          TEST_LANG="js"   TEST_TYPE="advan" VIDEO="true"
-  - TEST_NAME="page-objects"        TEST_LANG="java" TEST_TYPE="advan" VIDEO="true"
-  - TEST_NAME="page-objects"        TEST_LANG="js"   TEST_TYPE="advan" VIDEO="true"
 
 script:
   - ./CI/script

@@ -17,9 +17,9 @@ The examples are provided in Java with TestNG and JavaScript with Mocha + Chai.
 * [first-test](https://github.com/diemol/frontend_testing/tree/master/first-test)
 
     A page is opened, the page title is retrieved, and finally an assertion of a expected value is done.
-* [add-to-bag](https://github.com/diemol/frontend_testing/tree/master/add-to-bag)
+* [add-item-to-shopping-bag](https://github.com/diemol/frontend_testing/tree/master/add-item-to-shopping-cart)
 
-    This is an example where a guest searches for a brand and puts an article in the bag.
+    This is an example where a guest searches for a brand and puts an item in the shopping cart.
 * [running-in-parallel](https://github.com/diemol/frontend_testing/tree/master/running-in-parallel)
 
     After having tests working, a natural step is to try to execute all of them in less time. Some simple examples where a page is loaded are executed in parallel.
