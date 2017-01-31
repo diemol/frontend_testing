@@ -1,4 +1,4 @@
-### Selenium WebDriver example in JavaScript with Mocha and Chai
+### Selenium WebDriver example in JavaScript with Protractor
 
 #### Environment Setup
 
