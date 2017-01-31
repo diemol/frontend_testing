@@ -2,7 +2,7 @@
 
 This is an example where a guest searches for a brand and puts an article in the bag.
 
-Implemented in [Java with TestNG](https://github.com/diemol/frontend_testing/tree/master/add-item-to-shopping-cart/java-testng)
+Implemented in [Java with Fluentlenium](https://github.com/diemol/frontend_testing/tree/master/add-item-to-shopping-cart/java-fluentlenium)
 and [JavaScript with Protractor](https://github.com/diemol/frontend_testing/tree/master/add-item-to-shopping-cart/js-protractor).
 
 On each implementation, you will find two folders:

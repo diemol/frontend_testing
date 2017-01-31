@@ -1,4 +1,4 @@
-### Selenium WebDriver example in Java with TestNG
+### Selenium WebDriver example in Java, TestNG and Fluentlenium
 
 #### Environment Setup:
 
@@ -10,12 +10,7 @@ Check your [Java](https://github.com/diemol/frontend_testing#java) and [Docker](
 
     ```sh
     git clone https://github.com/diemol/frontend_testing.git
-    cd frontend_testing
-    ```
-1. Change directory to execute the examples (initial or complete folders):
-
-    ```sh
-    cd add-to-bag/java-testng/<initial/complete>
+    cd frontend_testing/add-item-to-shopping-cart/java-fluentlenium/<initial/complete>
     ```
 1. Execute the code
 
