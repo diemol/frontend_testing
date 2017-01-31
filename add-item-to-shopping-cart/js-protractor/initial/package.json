@@ -1,10 +1,10 @@
 {
-  "name": "js-mocha-chai",
+  "name": "js-protractor",
   "version": "1.0.0",
-  "description": "Add article to bag test with Mocha and Chai",
+  "description": "Add article to bag test with Protractor",
   "main": "test/base.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "./node_modules/protractor/bin/protractor ./test/conf.js"
   },
   "repository": {
     "type": "git",
@@ -15,10 +15,11 @@
   "bugs": {
     "url": "https://github.com/diemol/frontend_testing/issues"
   },
-  "homepage": "https://github.com/diemol/frontend_testing/tree/master/add-to-bag/js-mocha-chai#readme",
+  "homepage": "https://github.com/diemol/frontend_testing/tree/master/add-item-to-shopping-cart/js-protractor#readme",
   "dependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^2.5.3",
-    "selenium-webdriver": "^2.53.2"
+    "protractor": "^5.0.0"
+  },
+  "devDependencies": {
+    "jasmine-spec-reporter": "^3.2.0"
   }
 }
