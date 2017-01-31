@@ -1,5 +1,8 @@
 describe('Add item to Shopping Cart', function() {
 
+    var expectedArticleBrand;
+    var expectedArticleName;
+
     beforeEach(function() {
         // Needed since we are not testing an Angular app.
         browser.ignoreSynchronization = true;
@@ -19,6 +22,13 @@ describe('Add item to Shopping Cart', function() {
     it('Click on the first item', function() {
         var firstItem = element.all(by.className('catalogArticlesList_item')).first();
         firstItem.click();
+    });
+
+    it('Get article brand and name', function() {
+        var articleContent = element(by.className('z-vegas-ui_article-brand-info_content'));
+        var articleInfoBrand = articleContent.all(by.css('.z-vegas-ui_text.z-vegas-ui_text-standard'));
+        expectedArticleBrand = articleInfoBrand.first().getText();
+        expectedArticleName = articleInfoBrand.last().getText();
     });
 
     it('Click on select size drop down', function() {
@@ -41,35 +51,16 @@ describe('Add item to Shopping Cart', function() {
         // with the same class. The shopping cart is the last one. The test may break when they change the order.
         var shoppingCart = element.all(by.css('div[class="z-navicat-header_userAccNaviItem"]')).last();
         shoppingCart.click();
-        browser.sleep(1000 * 5);
     });
 
-
-    /*
-    it('Add article to bag and assert title', function(done) {
-
-        // Get article name for further assertion
-        var expectedArticleBrand = "";
-        driver.findElement(By.css("span[itemprop='brand']")).getText().then(function(text) {
-            expectedArticleBrand = text;
+    it('Assert article brand and name', function() {
+        var articleInfo = element.all(by.className('z-coast-fjord_link'));
+        var articleBrand = articleInfo.get(1);
+        articleBrand.getText().then(function (text) {
+            expect(expectedArticleBrand).toEqual(text.toUpperCase());
         });
-        var expectedArticleName = "";
-        driver.findElement(By.css("span[itemprop='name']")).getText().then(function(text) {
-            expectedArticleName = text;
-        });
-
-        // Assert article's name and price
-        driver.findElement(By.name("cart.product.name")).getText().then(function(actualArticleName) {
-            var expectedArticleFullName = expectedArticleBrand + " " + expectedArticleName;
-            expect(actualArticleName).to.equal(expectedArticleFullName, "Article name is different.");
-            done();
-        });
+        var articleName = articleInfo.last().element(by.css('.z-text.z-text-default')).getText();
+        expect(expectedArticleName).toEqual(articleName);
     });
-
-    afterEach(function(done) {
-        // Quitting the browser
-        driver.quit().then(done);
-    });
-    */
 });
 
