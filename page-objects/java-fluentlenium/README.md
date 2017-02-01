@@ -1,4 +1,4 @@
-### WebDriver Java TestNG examples using PageObjects
+### WebDriver Java Fluentlenium examples using PageObjects
 
 This is an example running a test written in Java, using Fluentlenium, and implementing [Page Objects](http://martinfowler.com/bliki/PageObject.html).
 
