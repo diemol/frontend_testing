@@ -11,7 +11,6 @@ describe('Add item to Shopping Cart', function() {
     it('Load Zalando home page', function() {
         browser.driver.manage().window().maximize();
         browser.get('https://www.zalando.de/');
-        expect(browser.getTitle()).toEqual('Schuhe & Mode online kaufen | ZALANDO Online Shop');
     });
 
     it('Type Nike in the search field', function() {

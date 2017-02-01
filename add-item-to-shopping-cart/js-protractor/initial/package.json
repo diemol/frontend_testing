@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/diemol/frontend_testing/tree/master/add-item-to-shopping-cart/js-protractor#readme",
   "dependencies": {
-    "protractor": "^5.0.0"
+    "protractor": "^5.0.1"
   },
   "devDependencies": {
     "jasmine-spec-reporter": "^3.2.0"

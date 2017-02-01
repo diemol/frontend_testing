@@ -1,7 +1,7 @@
 {
   "name": "js-protractor",
   "version": "1.0.0",
-  "description": "Add article to bag test with Protractor",
+  "description": "Add article to basket test with Protractor",
   "main": "test/base.js",
   "scripts": {
     "test": "./node_modules/protractor/bin/protractor ./test/conf.js"
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/diemol/frontend_testing/tree/master/add-item-to-shopping-cart/js-protractor#readme",
   "dependencies": {
-    "protractor": "^5.0.0"
+    "protractor": "^5.0.1"
   },
   "devDependencies": {
     "jasmine-spec-reporter": "^3.2.0"
