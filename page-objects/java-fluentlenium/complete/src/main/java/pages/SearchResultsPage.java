@@ -1,28 +1,16 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.fluentlenium.core.FluentPage;
+import org.fluentlenium.core.annotation.Page;
+import org.openqa.selenium.By;
 
-import java.util.List;
+public class SearchResultsPage extends FluentPage {
 
-public class SearchResultsPage {
+    @Page
+    private ProductDetailPage productDetailPage;
 
-    @SuppressWarnings("FieldCanBeLocal")
-    private WebDriver webDriver;
-
-    @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
-    @FindBy(className = "catalogArticlesList_productBox")
-    private List<WebElement> articlesList;
-
-    public SearchResultsPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-        PageFactory.initElements(this.webDriver, this);
-    }
-
-    public ArticleDetailPage clickOnFirstArticle() {
-        articlesList.get(0).click();
-        return new ArticleDetailPage(this.webDriver);
+    public ProductDetailPage clickOnFirstProduct() {
+        find(By.className("catalogArticlesList_item")).first().click();
+        return productDetailPage;
     }
 }

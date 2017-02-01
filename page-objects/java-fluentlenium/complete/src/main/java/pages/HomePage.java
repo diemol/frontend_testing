@@ -1,29 +1,29 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.fluentlenium.core.FluentPage;
+import org.fluentlenium.core.annotation.Page;
+import org.openqa.selenium.By;
 
-public class HomePage {
+import static org.assertj.core.api.Assertions.assertThat;
 
-    private WebDriver webDriver;
+public class HomePage extends FluentPage {
 
-    @FindBy(id = "searchContent")
-    private WebElement searchField;
+    @Page
+    private SearchResultsPage searchResultsPage;
 
-    public HomePage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-        PageFactory.initElements(this.webDriver, this);
+    @Override
+    public String getUrl() {
+        return "https://www.zalando.de/";
     }
 
-    public void visit() {
-        this.webDriver.get("https://www.zalando.de/");
+    @Override
+    public void isAt() {
+        assertThat(window().title().toLowerCase()).contains("zalando");
     }
 
     public SearchResultsPage search(String searchText) {
-        searchField.sendKeys(searchText);
-        searchField.submit();
-        return new SearchResultsPage(this.webDriver);
+        find(By.id("searchContent")).write(searchText).submit();
+        return searchResultsPage;
     }
+
 }

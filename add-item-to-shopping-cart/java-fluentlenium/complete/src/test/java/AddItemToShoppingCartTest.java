@@ -34,11 +34,11 @@ public class AddItemToShoppingCartTest extends FluentTestNg {
     }
 
     /*
-        Go to Zalando home page, search for "Nike", click on the first article, add it to the basket and
-        assert that the article name and value is the correct one.
+        Go to Zalando home page, search for "Nike", click on the first product, add it to the basket and
+        assert that the product name and value is the correct one.
      */
     @Test
-    public void searchArticleAndAddItToBag() throws InterruptedException {
+    public void searchProductAndAddItToBag() throws InterruptedException {
         // Go to the homepage
         LOG.info("Loading https://www.zalando.de/...");
         window().maximize();
@@ -50,12 +50,12 @@ public class AddItemToShoppingCartTest extends FluentTestNg {
         LOG.info("Click on the first item...");
         find(By.className("catalogArticlesList_item")).first().click();
 
-        LOG.info("Get article brand and name...");
-        FluentList<FluentWebElement> articleContent = find(By.className("z-vegas-ui_article-brand-info_content"));
-        FluentList<FluentWebElement> articleInfoBrand =
-                articleContent.find(By.cssSelector(".z-vegas-ui_text.z-vegas-ui_text-standard"));
-        String expectedArticleBrand = articleInfoBrand.first().text();
-        String expectedArticleName = articleInfoBrand.last().text();
+        LOG.info("Get product brand and name...");
+        FluentList<FluentWebElement> productContent = find(By.className("z-vegas-ui_article-brand-info_content"));
+        FluentList<FluentWebElement> produtInfoBrand =
+                productContent.find(By.cssSelector(".z-vegas-ui_text.z-vegas-ui_text-standard"));
+        String expectedProductBrand = produtInfoBrand.first().text();
+        String expectedProductName = produtInfoBrand.last().text();
 
         LOG.info("Click on select size drop down...");
         find(By.className("z-vegas-ui_dropover-facet")).click();
@@ -72,11 +72,11 @@ public class AddItemToShoppingCartTest extends FluentTestNg {
         // with the same class. The shopping cart is the last one. The test may break when they change the order.
         find(By.cssSelector("div[class='z-navicat-header_userAccNaviItem']")).last().click();
 
-        LOG.info("Assert article brand and name...");
-        FluentList<FluentWebElement> articleInfo = find(By.className("z-coast-fjord_link"));
-        String articleBrand = articleInfo.get(1).text();
-        String articleName = articleInfo.last().find(By.cssSelector(".z-text.z-text-default")).text();
-        assertThat(expectedArticleBrand).isEqualToIgnoringCase(articleBrand);
-        assertThat(expectedArticleName).isEqualToIgnoringCase(articleName);
+        LOG.info("Assert product brand and name...");
+        FluentList<FluentWebElement> productInfo = find(By.className("z-coast-fjord_link"));
+        String productBrand = productInfo.get(1).text();
+        String productName = productInfo.last().find(By.cssSelector(".z-text.z-text-default")).text();
+        assertThat(expectedProductBrand).isEqualToIgnoringCase(productBrand);
+        assertThat(expectedProductName).isEqualToIgnoringCase(productName);
     }
 }
