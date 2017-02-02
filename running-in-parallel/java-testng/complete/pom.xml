@@ -13,20 +13,20 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.9.10</version>
+            <version>6.10</version>
             <scope>test</scope>
         </dependency>
         <!-- Selenium WebDriver dependency -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>2.53.0</version>
+            <version>3.0.1</version>
         </dependency>
         <!-- Commons lang dependency, used in the project to generate random strings -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.4</version>
+            <version>3.5</version>
         </dependency>
     </dependencies>
 
