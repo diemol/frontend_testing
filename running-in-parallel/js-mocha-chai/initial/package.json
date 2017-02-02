@@ -17,9 +17,9 @@
   },
   "homepage": "https://github.com/diemol/frontend_testing#readme",
   "dependencies": {
-    "mocha-parallel-tests": "^0.4.2",
+    "mocha-parallel-tests": "^1.2.5",
     "chai": "^3.5.0",
-    "mocha": "^2.4.5",
-    "selenium-webdriver": "^2.53.2"
+    "mocha": "^3.2.0",
+    "selenium-webdriver": "^3.0.1"
   }
 }

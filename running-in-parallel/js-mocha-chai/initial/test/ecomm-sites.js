@@ -1,7 +1,5 @@
 // Retrieve the userName and accessKey from the environment Sauce Labs
-var userName = process.env.SAUCE_USERNAME;
-var accessKey = process.env.SAUCE_ACCESS_KEY;
-var sauceLabsUrl = "http://" + userName + ":" + accessKey + "@ondemand.saucelabs.com:80/wd/hub";
+var seleniumGridUrl = "http://localhost:4444/wd/hub";
 var driver;
 
 // Create a new instance of WebDriver
@@ -33,8 +31,6 @@ describe('Check Ecomm Sites Test', function() {
         var capabilities = {
             'browserName': webDriver.Browser.CHROME,
             'platform': 'LINUX',
-            'username': userName,
-            'accessKey': accessKey,
             'name': this.currentTest.title
         };
 
@@ -43,7 +39,7 @@ describe('Check Ecomm Sites Test', function() {
 
         driver = new webDriver.Builder()
             .withCapabilities(capabilities)
-            .usingServer(sauceLabsUrl)
+            .usingServer(seleniumGridUrl)
             .build();
 
         driver.manage().window().maximize();

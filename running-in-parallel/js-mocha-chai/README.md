@@ -5,29 +5,18 @@ framework. The tests are executed in parallel with [Mocha-Parallel-Tests](https:
 
 ### Environment Setup
 
-1. Check your [JavaScript](https://github.com/diemol/frontend_testing#javascript) setup.
-
-2. Sauce Credentials
-    * In the terminal export your Sauce Labs Credentials as environmental variables:
-    ```sh
-    export SAUCE_USERNAME=<your Sauce Labs username>
-    export SAUCE_ACCESS_KEY=<your Sauce Labs access key>
-    ```
+1. Check your [JavaScript](https://github.com/diemol/frontend_testing#javascript) and 
+[Docker](https://github.com/diemol/frontend_testing#docker) setup.
 
 ### Steps to run it:
 
-1. Clone the repo:
+1. Clone the repo and go to the folder:
 
     ```sh
     git clone https://github.com/diemol/frontend_testing
-    cd frontend_testing
+    cd frontend_testing/running-in-parallel/js-mocha-chai/<initial/complete>
     ```
-1. Change directory to:
-
-    ```sh
-    cd running-in-parallel/js-mocha-chai/<initial/complete>
-    ```
-1. Install Node dependencies (Selenium WebDriver, Mocha, Chai, and Mocha-Parallel-Tests):
+1. Install Node dependencies:
 
     ```sh
     npm install
@@ -37,8 +26,6 @@ framework. The tests are executed in parallel with [Mocha-Parallel-Tests](https:
 	```sh
 	npm test
 	```
-
-Afterwards you can check the executed test in the [Sauce Labs Dashboard](https://saucelabs.com/beta/dashboard/)
 
 ### How is parallelism working in these examples?
 
@@ -50,6 +37,6 @@ the `test` folder and runs it in its own thread. In addition, you can change the
 
 _For the complete status of the example_
 
-When multiple browsers are used, the project is wrapped in several Grunt tasks and then executed in parallel.
+When more than one browser is used, the project is wrapped in several Grunt tasks and then executed in parallel.
 
 
