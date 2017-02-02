@@ -18,7 +18,7 @@ env:
   - TEST_NAME="page-objects"                  TEST_LANG="java" TEST_TYPE="advan"
   - TEST_NAME="page-objects"                  TEST_LANG="js"   TEST_TYPE="advan"
   - TEST_NAME="running-in-parallel"           TEST_LANG="java" TEST_TYPE="advan"
-  - TEST_NAME="running-in-parallel"           TEST_LANG="js"   TEST_TYPE="advan"
+#  - TEST_NAME="running-in-parallel"           TEST_LANG="js"   TEST_TYPE="advan"
 script:
   - ./CI/script
 
