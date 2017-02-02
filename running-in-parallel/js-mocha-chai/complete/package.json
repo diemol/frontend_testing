@@ -22,7 +22,7 @@
     "grunt-cli": "^1.2.0",
     "grunt-mocha-parallel": "^0.1.7",
     "grunt-parallel": "^0.5.1",
-    "mocha": "^2.4.5",
-    "selenium-webdriver": "^2.53.2"
+    "mocha": "^3.2.0",
+    "selenium-webdriver": "^3.0.1"
   }
 }

@@ -35,8 +35,7 @@ module.exports = function (grunt) {
                 options: {
                     grunt: true
                 },
-                tasks: ['run_Windows7_ie', 'run_LINUX_firefox',
-                    'run_Windows8_chrome', 'run_OSX10.11_safari']
+                tasks: ['run_LINUX_firefox', 'run_LINUX_chrome']
             }
         }
     });
@@ -45,31 +44,19 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-mocha-parallel');
     grunt.loadNpmTasks('grunt-parallel');
 
-    grunt.registerTask('Windows7_ie', function(n) {
-        grunt.option('browser', 'internet explorer');
-        grunt.option('platform', "Windows 7");
+    grunt.registerTask('LINUX_chrome', function(n) {
+        grunt.option('browser', 'chrome');
+        grunt.option('platform', "LINUX");
     });
 
     grunt.registerTask('LINUX_firefox', function(n) {
         grunt.option('browser', 'firefox');
-        grunt.option('platform', "XP");
-    });
-
-    grunt.registerTask('Windows8_chrome', function(n) {
-        grunt.option('browser', 'chrome');
-        grunt.option('platform', "Windows 8");
-    });
-
-    grunt.registerTask('OSX10.11_safari', function(n) {
-        grunt.option('browser', 'safari');
-        grunt.option('platform', "OS X 10.11");
+        grunt.option('platform', "LINUX");
     });
 
     // register tasks
     grunt.registerTask('default', ['parallel']);
 
-    grunt.registerTask('run_Windows7_ie', ['Windows7_ie', 'mocha_parallel']);
     grunt.registerTask('run_LINUX_firefox', ['LINUX_firefox', 'mocha_parallel']);
-    grunt.registerTask('run_Windows8_chrome', ['Windows8_chrome', 'mocha_parallel']);
-    grunt.registerTask('run_OSX10.11_safari', ['OSX10.11_safari', 'mocha_parallel']);
+    grunt.registerTask('run_LINUX_chrome', ['LINUX_chrome', 'mocha_parallel']);
 };
