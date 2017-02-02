@@ -10,36 +10,22 @@ Both implementations are made to run on [SauceLabs](https://saucelabs.com/)
 
 #### Environment Setup:
 
-1. Check your [Java](https://github.com/diemol/frontend_testing#java) setup.
-
-1. Sauce Credentials
-    * In the terminal export your Sauce Labs Credentials as environmental variables:
-    ```sh
-    export SAUCE_USERNAME=<your Sauce Labs username>
-    export SAUCE_ACCESS_KEY=<your Sauce Labs access key>
-    ```
+1. Check your [Java](https://github.com/diemol/frontend_testing#java) and 
+[Docker](https://github.com/diemol/frontend_testing#docker) setup.
 
 #### Steps to run it:
 
-1. Clone the repo:
+1. Clone the repo and go to the folder:
 
     ```sh
     git clone https://github.com/diemol/frontend_testing.git
-    cd frontend_testing
-    ```
-1. Change directory to execute the examples:
-
-    ```sh
-    cd running-in-parallel/java-testng/<initial/complete>
+    cd frontend_testing/running-in-parallel/java-testng/<initial/complete>
     ```
 1. Execute the code
 
 	```sh
 	mvn test
 	```
-
-Afterwards you can check the executed test in your [Sauce Labs Dashboard](https://saucelabs.com/beta/dashboard/)
-
 
 #### How does parallelism work in this example?
 

@@ -1,5 +1,4 @@
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -15,12 +14,9 @@ import java.net.URL;
 
 public class SearchEnginesTest {
 
-    public static final String userName = System.getenv("SAUCE_USERNAME");
-    public static final String accessKey = System.getenv("SAUCE_ACCESS_KEY");
-    public static final String SAUCE_LABS_URL = String.format("http://%s:%s@ondemand.saucelabs.com:80/wd/hub",
-            userName, accessKey);
+    private static final String SELENIUM_GRID_URL = "http://localhost:4444/wd/hub";
 
-    public WebDriver webDriver;
+    private WebDriver webDriver;
 
     @BeforeMethod
     public void startWebDriver(Method method) throws MalformedURLException {
@@ -29,7 +25,7 @@ public class SearchEnginesTest {
         desiredCapabilities.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
         desiredCapabilities.setCapability("name", method.getName());
 
-        webDriver = new RemoteWebDriver(new URL(SAUCE_LABS_URL), desiredCapabilities);
+        webDriver = new RemoteWebDriver(new URL(SELENIUM_GRID_URL), desiredCapabilities);
 
         webDriver.manage().window().maximize();
     }
