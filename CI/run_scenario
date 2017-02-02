@@ -30,24 +30,13 @@ echo "#================================"
 echo "# Scenario ${test_name}"
 echo "#================================"
 
-if [ "${VIDEO}" = "true" ]; then
-  echo "Starting video recording..."
-  if docker exec grid stop-video >/dev/null 2>&1; then
-    # backup
-    mkdir -p ./CI/videos/bup/
-    docker cp grid:/videos/. ./CI/videos/bup/
-    docker exec grid rm -f /videos/*
-  fi
-  docker exec grid start-video
-fi
-
 echo "Starting ${test_lang} tests..."
 cd ${test_name}
 
 if [ "${test_lang}" = "java" ]; then
   java -version
   mvn --version
-  cd java-testng
+  cd java-*
 
   if [ "${test_type}" = "basic" ]; then
     mvn test
@@ -70,7 +59,7 @@ if [ "${test_lang}" = "java" ]; then
   fi
 elif [ "${test_lang}" = "js" ]; then
   node --version
-  cd js-mocha-chai
+  cd js-*
 
   if [ "${test_type}" = "basic" ]; then
     npm install
@@ -89,18 +78,3 @@ elif [ "${test_lang}" = "js" ]; then
   fi
 fi
 
-# back to root dir
-cd ../..
-
-if [ "${VIDEO}" = "true" ]; then
-  echo "Ending video recording..."
-  docker exec grid stop-video
-  mkdir -p ./CI/videos
-  test_id="${TRAVIS_BUILD_NUMBER}_${test_name}_${test_lang}"
-  docker cp grid:/videos/. ./CI/videos/${test_id}/
-  cd ./CI/videos/${test_id}/
-  rename "s/^test(.*)/${test_id}\$1/" *.mkv
-  mv *.mkv ..
-  cd ../../..
-  docker exec grid rm -f /videos/*
-fi

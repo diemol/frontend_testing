@@ -7,4 +7,4 @@ echo "#=================="
 echo "# Archive artifacts"
 echo "#=================="
 # pending to upload to S3 bucket
-ls -la ./CI/videos
+ls -la /tmp/videos

@@ -11,9 +11,14 @@ install:
   - ./CI/install
 
 env:
-  - TEST_NAME="first-test"          TEST_LANG="java" TEST_TYPE="basic" VIDEO="true"
-  - TEST_NAME="first-test"          TEST_LANG="js"   TEST_TYPE="basic" VIDEO="true"
-
+  - TEST_NAME="first-test"                    TEST_LANG="java" TEST_TYPE="basic"
+  - TEST_NAME="first-test"                    TEST_LANG="js"   TEST_TYPE="basic"
+  - TEST_NAME="add-item-to-shopping-cart"     TEST_LANG="java" TEST_TYPE="advan"
+  - TEST_NAME="add-item-to-shopping-cart"     TEST_LANG="js"   TEST_TYPE="advan"
+  - TEST_NAME="page-objects"                  TEST_LANG="java" TEST_TYPE="advan"
+  - TEST_NAME="page-objects"                  TEST_LANG="js"   TEST_TYPE="advan"
+  - TEST_NAME="running-in-parallel"           TEST_LANG="java" TEST_TYPE="advan"
+  - TEST_NAME="running-in-parallel"           TEST_LANG="js"   TEST_TYPE="advan"
 script:
   - ./CI/script
 
