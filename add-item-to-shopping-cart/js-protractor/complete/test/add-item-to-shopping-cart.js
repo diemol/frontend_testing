@@ -30,14 +30,18 @@ describe('Add item to Shopping Cart', function() {
         expectedArticleName = articleInfoBrand.last().getText();
     });
 
-    it('Click on select size drop down', function() {
-        element(by.className('z-vegas-ui_dropover-facet')).click();
-    });
-
-    it('Click on the first available size', function() {
-        var availableSize = '.z-vegas-ui_sizeDropdown_sizeListItem.z-vegas-ui_sizeDropdown_sizeListItem-available';
-        var availableSizeLocator = element.all(by.css(availableSize)).first();
-        availableSizeLocator.click();
+    it('Click the first available size', function() {
+        var sizeDropDown = element(by.className('z-vegas-ui_dropover-facet'));
+        sizeDropDown.isPresent().then(function (isPresent) {
+            if (isPresent) {
+                sizeDropDown.click();
+                var availableSizeLocator = element.all(by.css(availableSize)).first();
+                availableSizeLocator.click();
+            } else {
+                var availableSizes = element.all(by.css('.z-vegas-ui_sizeItem.z-vegas-ui_interactable.z-vegas-ui_sizeList_listItem'));
+                availableSizes.first().click();
+            }
+        });
     });
 
     it('Add product to shopping cart', function() {

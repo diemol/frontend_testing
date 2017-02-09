@@ -1,14 +1,15 @@
 var ShoppingCartPage = require('./shopping-cart-page.js');
 
-ProductDetailPage = function ArticleDetailPage() {
+ProductDetailPage = function ProductDetailPage() {
     this.productContent = element(by.className('z-vegas-ui_article-brand-info_content'));
     this.productInfoBrand = this.productContent.all(by.css('.z-vegas-ui_text.z-vegas-ui_text-standard'));
-    this.sizeDropDownList = element(by.className('z-vegas-ui_dropover-facet'));
     this.availableSize = '.z-vegas-ui_sizeDropdown_sizeListItem.z-vegas-ui_sizeDropdown_sizeListItem-available';
     this.availableSizeLocator = element.all(by.css(this.availableSize));
     this.addToShoppingCartButtonLocator = '.z-button.z-button-primary.z-button-button.z-button_mouse';
     this.addToShoppingCartButton = element(by.css(this.addToShoppingCartButtonLocator));
     this.shoppingCart = element.all(by.css('div[class="z-navicat-header_userAccNaviItem"]')).last();
+    this.sizeDropDownListLocator = by.className('z-vegas-ui_dropover-facet');
+    this.availableSizesLocator = by.css('.z-vegas-ui_sizeItem.z-vegas-ui_interactable.z-vegas-ui_sizeList_listItem');
 };
 
 ProductDetailPage.prototype.getProductBrand = function() {
@@ -20,8 +21,15 @@ ProductDetailPage.prototype.getProductName = function() {
 };
 
 ProductDetailPage.prototype.selectFirstAvailableSize = function() {
-    this.sizeDropDownList.click();
-    this.availableSizeLocator.first().click();
+    var self = this;
+    element(self.sizeDropDownListLocator).isPresent().then(function (isPresent) {
+        if (isPresent) {
+            element(self.sizeDropDownListLocator).click();
+            self.availableSizeLocator.first().click();
+        } else {
+            element.all(self.availableSizesLocator).first().click();
+        }
+    });
 };
 
 ProductDetailPage.prototype.addToShoppingCart = function() {

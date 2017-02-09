@@ -1,4 +1,4 @@
-var ArticleDetailPage = require('./product-detail-page.js');
+var ProductDetailPage = require('./product-detail-page.js');
 
 SearchResultsPage = function SearchResultsPage() {
     this.articleList = element.all(by.className('catalogArticlesList_item'));
@@ -6,7 +6,7 @@ SearchResultsPage = function SearchResultsPage() {
 
 SearchResultsPage.prototype.clickOnFirstArticle = function () {
     this.articleList.first().click();
-    return new ArticleDetailPage();
+    return new ProductDetailPage();
 };
 
 module.exports = SearchResultsPage;
