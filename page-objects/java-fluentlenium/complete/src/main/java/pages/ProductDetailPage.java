@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 @SuppressWarnings("FieldCanBeLocal")
 public class ProductDetailPage extends FluentPage {
 
+    @SuppressWarnings("unused")
     @Page
     private ShoppingCartPage shoppingCartPage;
 
