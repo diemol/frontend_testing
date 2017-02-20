@@ -4,20 +4,22 @@ import org.fluentlenium.core.FluentPage;
 import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.By;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class ProductDetailPage extends FluentPage {
 
     @Page
     private ShoppingCartPage shoppingCartPage;
 
     private final String PRODUCT_CONTENT = "z-vegas-ui_article-brand-info_content";
-    private final String PRODUCT_INFO_BRAND = ".z-vegas-ui_text.z-vegas-ui_text-standard";
+    private final String PRODUCT_BRAND = ".z-vegas-ui_text.z-vegas-ui_text-vegas-detail-title";
+    private final String PRODUCT_NAME = ".z-vegas-ui_text.z-vegas-ui_text-vegas-body";
 
     public String getProductBrand() {
-        return find(By.className(PRODUCT_CONTENT)).find(By.cssSelector(PRODUCT_INFO_BRAND)).first().text();
+        return find(By.className(PRODUCT_CONTENT)).find(By.cssSelector(PRODUCT_BRAND)).text();
     }
 
     public String getProductName() {
-        return find(By.className(PRODUCT_CONTENT)).find(By.cssSelector(PRODUCT_INFO_BRAND)).last().text();
+        return find(By.className(PRODUCT_CONTENT)).find(By.cssSelector(PRODUCT_NAME)).text();
     }
 
     public void selectFirstAvailableSize() {

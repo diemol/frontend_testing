@@ -1,7 +1,7 @@
 describe('Add item to Shopping Cart', function() {
 
-    var expectedArticleBrand;
-    var expectedArticleName;
+    var expectedProductBrand;
+    var expectedProductName;
 
     beforeEach(function() {
         // Needed since we are not testing an Angular app.
@@ -24,16 +24,16 @@ describe('Add item to Shopping Cart', function() {
     });
 
     it('Get article brand and name', function() {
-        var articleContent = element(by.className('z-vegas-ui_article-brand-info_content'));
-        var articleInfoBrand = articleContent.all(by.css('.z-vegas-ui_text.z-vegas-ui_text-standard'));
-        expectedArticleBrand = articleInfoBrand.first().getText();
-        expectedArticleName = articleInfoBrand.last().getText();
+        var productContent = element(by.className('z-vegas-ui_article-brand-info_content'));
+        expectedProductBrand = productContent.element(by.css('.z-vegas-ui_text.z-vegas-ui_text-vegas-detail-title')).getText();
+        expectedProductName = productContent.element(by.css('.z-vegas-ui_text.z-vegas-ui_text-vegas-body')).getText();
     });
 
     it('Click the first available size', function() {
-        var sizeDropDown = element(by.className('z-vegas-ui_dropover-facet'));
+        var sizeDropDown = element.all(by.className('z-vegas-ui_dropover-facet')).first();
         sizeDropDown.isPresent().then(function (isPresent) {
             if (isPresent) {
+                var availableSize = '.z-vegas-ui_sizeDropdown_sizeListItem.z-vegas-ui_sizeDropdown_sizeListItem-available';
                 sizeDropDown.click();
                 var availableSizeLocator = element.all(by.css(availableSize)).first();
                 availableSizeLocator.click();
@@ -57,13 +57,13 @@ describe('Add item to Shopping Cart', function() {
     });
 
     it('Assert article brand and name', function() {
-        var articleInfo = element.all(by.className('z-coast-fjord_link'));
-        var articleBrand = articleInfo.get(1);
-        articleBrand.getText().then(function (text) {
-            expect(expectedArticleBrand).toEqual(text.toUpperCase());
+        var productInfo = element.all(by.className('z-coast-fjord_link'));
+        var productBrand = productInfo.get(1);
+        productBrand.getText().then(function (text) {
+            expect(expectedProductBrand).toEqual(text.toUpperCase());
         });
-        var articleName = articleInfo.last().element(by.css('.z-text.z-text-default')).getText();
-        expect(expectedArticleName).toEqual(articleName);
+        var articleName = productInfo.last().element(by.css('.z-text.z-text-default')).getText();
+        expect(expectedProductName).toEqual(articleName);
     });
 });
 
