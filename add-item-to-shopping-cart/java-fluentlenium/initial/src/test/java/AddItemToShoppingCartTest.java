@@ -48,11 +48,11 @@ public class AddItemToShoppingCartTest extends FluentTestNg {
         LOG.info("Click on the first item...");
         find(By.className("catalogArticlesList_item")).first().click();
 
-        LOG.info("Get article brand and name...");
-        FluentList<FluentWebElement> articleContent = find(By.className("z-vegas-ui_article-brand-info_content"));
-        FluentList<FluentWebElement> articleInfoBrand =
-                articleContent.find(By.cssSelector(".z-vegas-ui_text.z-vegas-ui_text-standard"));
-        String expectedArticleBrand = articleInfoBrand.first().text();
-        String expectedArticleName = articleInfoBrand.last().text();
+        LOG.info("Get product brand and name...");
+        FluentList<FluentWebElement> productContent = find(By.className("z-vegas-ui_article-brand-info_content"));
+        String expectedProductBrand =
+                productContent.find(By.cssSelector(".z-vegas-ui_text.z-vegas-ui_text-vegas-detail-title")).text();
+        String expectedProductName =
+                productContent.find(By.cssSelector(".z-vegas-ui_text.z-vegas-ui_text-vegas-body")).text();
     }
 }

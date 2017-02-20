@@ -25,10 +25,9 @@ describe('Add item to Shopping Cart', function() {
     });
 
     it('Get article brand and name', function() {
-        var articleContent = element(by.className('z-vegas-ui_article-brand-info_content'));
-        var articleInfoBrand = articleContent.all(by.css('.z-vegas-ui_text.z-vegas-ui_text-standard'));
-        expectedArticleBrand = articleInfoBrand.first().getText();
-        expectedArticleName = articleInfoBrand.last().getText();
+        var productContent = element(by.className('z-vegas-ui_article-brand-info_content'));
+        expectedProductBrand = productContent.element(by.css('.z-vegas-ui_text.z-vegas-ui_text-vegas-detail-title')).getText();
+        expectedProductName = productContent.element(by.css('.z-vegas-ui_text.z-vegas-ui_text-vegas-body')).getText();
     });
 });
 
