@@ -15,7 +15,7 @@ public class FirstWebDriverTestJavaTestNGTest {
     private static final String URL = "http://localhost:4444/wd/hub";
 
     @Test
-    public void checkPHPTravelsPageTitle() throws MalformedURLException {
+    public void checkZalandoPageTitle() throws MalformedURLException {
         DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
         desiredCapabilities.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
 
@@ -25,7 +25,7 @@ public class FirstWebDriverTestJavaTestNGTest {
         // Maximize the window
         driver.manage().window().maximize();
 
-        // Go to PHPTravels website
+        // Go to Zalando website
         driver.get("https://www.zalando.de/");
 
         // Assert that the title is the expected one
