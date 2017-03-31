@@ -24,7 +24,9 @@ public class BaseTest {
     public static Object[][] browsersAndPlatformsProvider() {
         return new Object[][] {
                 new Object[]{BrowserType.CHROME, Platform.LINUX},
-                new Object[]{BrowserType.FIREFOX, Platform.LINUX}
+                new Object[]{BrowserType.FIREFOX, Platform.LINUX},
+                new Object[]{BrowserType.SAFARI, Platform.EL_CAPITAN},
+                new Object[]{BrowserType.IE, Platform.WIN10},
         };
     }
 

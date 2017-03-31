@@ -14,9 +14,9 @@ import java.util.logging.Logger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class AddItemToShoppingCartTest extends FluentTestNg {
+public class AddItemToShoppingCartChromeWinTest extends FluentTestNg {
 
-    private static final Logger LOG = Logger.getLogger(AddItemToShoppingCartTest.class.getName());
+    private static final Logger LOG = Logger.getLogger(AddItemToShoppingCartChromeWinTest.class.getName());
 
     @Page
     private HomePage homePage;
@@ -34,7 +34,8 @@ public class AddItemToShoppingCartTest extends FluentTestNg {
     @Override
     public Capabilities getCapabilities() {
         DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
-        desiredCapabilities.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
+        desiredCapabilities.setCapability(CapabilityType.PLATFORM, Platform.WIN10);
+        desiredCapabilities.setCapability("name", "searchArticleAndAddItToBag");
         return desiredCapabilities;
     }
 

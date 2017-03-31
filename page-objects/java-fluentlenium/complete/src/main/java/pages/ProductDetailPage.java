@@ -24,12 +24,15 @@ public class ProductDetailPage extends FluentPage {
     }
 
     public void selectFirstAvailableSize() {
-        if (find(By.className("z-vegas-ui_dropover-facet")).present()) {
-            find(By.className("z-vegas-ui_dropover-facet")).click();
+        By zVegasDropOverFacet = By.className("z-vegas-ui_dropover-facet");
+        if (find(zVegasDropOverFacet).present()) {
+            find(zVegasDropOverFacet).click();
             String availableSize = ".z-vegas-ui_sizeDropdown_sizeListItem.z-vegas-ui_sizeDropdown_sizeListItem-available";
-            find(By.cssSelector(availableSize)).first().click();
+            By availableSizeLocator = By.cssSelector(availableSize);
+            find(availableSizeLocator).first().click();
         } else {
-            find(By.cssSelector(".z-vegas-ui_sizeItem.z-vegas-ui_interactable.z-vegas-ui_sizeList_listItem")).first().click();
+            By listItem = By.cssSelector(".z-vegas-ui_sizeItem.z-vegas-ui_interactable.z-vegas-ui_sizeList_listItem");
+            find(listItem).first().click();
         }
     }
 
