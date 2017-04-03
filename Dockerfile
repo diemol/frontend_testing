@@ -1,7 +1,9 @@
 # Build
 #  docker build -t fe .
 # Use
+#  curl -sSL https://raw.githubusercontent.com/dosel/t/i/p | bash -s start
 #  docker run --rm -ti --net container:zalenium fe
+#  curl -sSL https://raw.githubusercontent.com/dosel/t/i/p | bash -s stop
 FROM node:7
 
 RUN apt-get -qqy update \
