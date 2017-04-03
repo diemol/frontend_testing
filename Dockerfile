@@ -12,4 +12,4 @@ RUN ln -sf /frontend_testing/page-objects/js-protractor/complete /js-protractor
 WORKDIR /js-protractor
 RUN npm install
 
-CMD ["npm test"]
+CMD ["/usr/local/bin/npm", "test"]
