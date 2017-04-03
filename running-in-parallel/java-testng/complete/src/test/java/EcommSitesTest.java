@@ -15,26 +15,4 @@ public class EcommSitesTest extends BaseTest {
                 "Page title is not the expected one");
     }
 
-    @Test(dataProvider = "browsersAndPlatforms")
-    public void loadAmazonPageAndCheckTitle(String browserType, Platform platform) {
-
-        // Go to the homepage
-        getWebDriver().get("http://www.amazon.de");
-
-        // Assert that the title is the expected one
-        Assert.assertEquals(getWebDriver().getTitle(), "Amazon.de: Günstige Preise für Elektronik & Foto, Filme, " +
-                "Musik, Bücher, Games, Spielzeug & mehr");
-    }
-
-    @Test(dataProvider = "browsersAndPlatforms")
-    public void loadOttoPageAndCheckTitle(String browserType, Platform platform) {
-
-        // Go to the homepage
-        getWebDriver().get("http://www.otto.de");
-
-        // Assert that the title is the expected one
-        Assert.assertEquals(getWebDriver().getTitle(), "OTTO - Mode, Möbel & Technik » Zum Online-Shop",
-                "Page title is not the expected one");
-    }
-
 }
