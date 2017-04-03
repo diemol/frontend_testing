@@ -1,3 +1,7 @@
+# Build
+#  docker build -t fe .
+# Use
+#  docker run --rm -ti --net container:zalenium fe
 FROM node:7
 
 RUN apt-get -qqy update \
