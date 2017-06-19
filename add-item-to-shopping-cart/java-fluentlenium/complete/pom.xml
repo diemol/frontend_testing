@@ -30,14 +30,14 @@
         <dependency>
             <groupId>org.fluentlenium</groupId>
             <artifactId>fluentlenium-testng</artifactId>
-            <version>3.1.1</version>
+            <version>3.2.0</version>
             <scope>test</scope>
         </dependency>
         <!-- Fluentlenium and AssertJ-->
         <dependency>
             <groupId>org.fluentlenium</groupId>
             <artifactId>fluentlenium-assertj</artifactId>
-            <version>3.1.1</version>
+            <version>3.2.0</version>
             <scope>test</scope>
         </dependency>
         <!-- TestNG dependency -->
