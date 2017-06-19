@@ -51,24 +51,22 @@ public class AddItemToShoppingCartTest extends FluentTestNg {
         find(By.className("catalogArticlesList_item")).first().click();
 
         LOG.info("Get product brand and name...");
-        FluentList<FluentWebElement> productContent = find(By.className("z-vegas-ui_article-brand-info_content"));
         String expectedProductBrand =
-                productContent.find(By.cssSelector(".z-vegas-ui_text.z-vegas-ui_text-vegas-detail-title")).text();
+                find(By.cssSelector(".z-text-block.zvui-product-title-brandname.z-text.z-text-body.z-text-black")).text();
         String expectedProductName =
-                productContent.find(By.cssSelector(".z-vegas-ui_text.z-vegas-ui_text-vegas-body")).text();
+                find(By.cssSelector(".z-text-block.zvui-product-title-productname.z-text.z-text-body.z-text-black")).text();
 
         LOG.info("Click on the first available size...");
-        if (find(By.className("z-vegas-ui_dropover-facet")).present()) {
-            find(By.className("z-vegas-ui_dropover-facet")).click();
-            String availableSize = ".z-vegas-ui_sizeDropdown_sizeListItem.z-vegas-ui_sizeDropdown_sizeListItem-available";
-            find(By.cssSelector(availableSize)).first().click();
+        if (find(By.className("zvui-size-select-dropdown-placeholder")).present()) {
+            find(By.className("zvui-size-select-dropdown-placeholder")).first().click();
+            find(By.className("zvui-size-select-dropdown-option")).first().click();
         } else {
             find(By.cssSelector(".z-vegas-ui_sizeItem.z-vegas-ui_interactable.z-vegas-ui_sizeList_listItem")).first().click();
         }
 
 
         LOG.info("Add product to shopping cart...");
-        find(By.cssSelector(".z-button.z-button-primary.z-button-button.z-button_mouse")).click();
+        find(By.cssSelector(".z-richButton.z-richButton-primary")).click();
 
         LOG.info("Go to shopping cart...");
         // Not possible to get a visible unique element for the shopping cart, and there are currently 5 elements
