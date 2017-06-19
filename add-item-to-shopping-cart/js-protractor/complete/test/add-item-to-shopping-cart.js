@@ -24,18 +24,16 @@ describe('Add item to Shopping Cart', function() {
     });
 
     it('Get article brand and name', function() {
-        var productContent = element(by.className('z-vegas-ui_article-brand-info_content'));
-        expectedProductBrand = productContent.element(by.css('.z-vegas-ui_text.z-vegas-ui_text-vegas-detail-title')).getText();
-        expectedProductName = productContent.element(by.css('.z-vegas-ui_text.z-vegas-ui_text-vegas-body')).getText();
+        expectedProductBrand = element(by.css('.z-text-block.zvui-product-title-brandname.z-text.z-text-body.z-text-black')).getText();
+        expectedProductName = element(by.css('.z-text-block.zvui-product-title-productname.z-text.z-text-body.z-text-black')).getText();
     });
 
     it('Click the first available size', function() {
-        var sizeDropDown = element.all(by.className('z-vegas-ui_dropover-facet')).first();
+        var sizeDropDown = element.all(by.className('zvui-size-select-dropdown-placeholder')).first();
         sizeDropDown.isPresent().then(function (isPresent) {
             if (isPresent) {
-                var availableSize = '.z-vegas-ui_sizeDropdown_sizeListItem.z-vegas-ui_sizeDropdown_sizeListItem-available';
                 sizeDropDown.click();
-                var availableSizeLocator = element.all(by.css(availableSize)).first();
+                var availableSizeLocator = element.all(by.className("zvui-size-select-dropdown-option")).first();
                 availableSizeLocator.click();
             } else {
                 var availableSizes = element.all(by.css('.z-vegas-ui_sizeItem.z-vegas-ui_interactable.z-vegas-ui_sizeList_listItem'));
@@ -45,7 +43,7 @@ describe('Add item to Shopping Cart', function() {
     });
 
     it('Add product to shopping cart', function() {
-        var button = '.z-button.z-button-primary.z-button-button.z-button_mouse';
+        var button = '.z-richButton.z-richButton-primary';
         element(by.css(button)).click();
     });
 
@@ -59,9 +57,12 @@ describe('Add item to Shopping Cart', function() {
     it('Assert article brand and name', function() {
         var productInfo = element.all(by.className('z-coast-fjord_link'));
         var productBrand = productInfo.get(1);
+        expect(expectedProductBrand).toEqual(productBrand.getText());
+        /*
         productBrand.getText().then(function (text) {
             expect(expectedProductBrand).toEqual(text.toUpperCase());
         });
+        */
         var articleName = productInfo.last().element(by.css('.z-text.z-text-default')).getText();
         expect(expectedProductName).toEqual(articleName);
     });
