@@ -22,8 +22,8 @@ describe('Add item to Shopping Cart', function() {
                 firstItem.first().click();
             } else {
                 firstItem = element.all(by.css('z-grid[class=z-nvg-cognac_articles]')).first();
+                firstItem.click();
             }
-            firstItem.click();
         });
     });
 });
