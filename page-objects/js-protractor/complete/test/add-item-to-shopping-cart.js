@@ -48,10 +48,8 @@ describe('Add item to Shopping Cart', function() {
     });
 
     it('Assert article brand and name', function() {
-        shoppingCartPage.getProductBrand().then(function (text) {
-            expect(expectedProductBrand).toEqual(text.toUpperCase());
-        });
-        expect(expectedProductName).toEqual(shoppingCartPage.getProductName());
+        expect(expectedProductBrand).toEqual(productBrand.getText());
+        expect(expectedProductName).toContain(shoppingCartPage.getProductName());
     });
 });
 
