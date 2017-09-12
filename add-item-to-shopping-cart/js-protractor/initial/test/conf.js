@@ -4,7 +4,7 @@ exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
     specs: ['add-item-to-shopping-cart.js'],
     onPrepare: function(){
-        let SpecReporter = require('jasmine-spec-reporter').SpecReporter;
+        var SpecReporter = require('jasmine-spec-reporter').SpecReporter;
         jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'all'}));
     },
     jasmineNodeOpts: {
