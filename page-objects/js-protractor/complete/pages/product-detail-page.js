@@ -1,43 +1,45 @@
 var ShoppingCartPage = require('./shopping-cart-page.js');
 
 ProductDetailPage = function ProductDetailPage() {
-    this.productContent = element(by.className('z-vegas-ui_article-brand-info_content'));
-    this.productInfoBrand = this.productContent.all(by.css('.z-vegas-ui_text.z-vegas-ui_text-standard'));
-    this.availableSize = '.z-vegas-ui_sizeDropdown_sizeListItem.z-vegas-ui_sizeDropdown_sizeListItem-available';
-    this.availableSizeLocator = element.all(by.css(this.availableSize));
-    this.addToShoppingCartButtonLocator = '.z-button.z-button-primary.z-button-button.z-button_mouse';
-    this.addToShoppingCartButton = element(by.css(this.addToShoppingCartButtonLocator));
-    this.shoppingCart = element.all(by.css('div[class="z-navicat-header_userAccNaviItem"]')).last();
-    this.sizeDropDownListLocator = by.className('z-vegas-ui_dropover-facet');
-    this.availableSizesLocator = by.css('.z-vegas-ui_sizeItem.z-vegas-ui_interactable.z-vegas-ui_sizeList_listItem');
+    this.newPdp = false;
+    this.productNameLocator = '.z-hlwd-text.z-hlwd-color-black.title-2.z-hlwd-clamp-2';
+    this.productBrandLocator = '.z-hlwd-text.z-hlwd-color-black.detail.z-hlwd-p-bottom-xs.z-hlwd-bold.z-hlwd-truncate';
+    var productName = element(by.css(this.productNameLocator));
+    productName.isPresent().then(function (isPresent) {
+        if (isPresent) {
+            this.newPdp = true;
+        } else {
+            this.productNameLocator = '.z-text.zvui-product-title-productname.z-text-block.z-text-body.z-text-black';
+            this.productBrandLocator = '.z-text.zvui-product-title-brandname.z-text-block.z-text-body.z-text-black';
+        }
+    });
+
 };
 
 ProductDetailPage.prototype.getProductBrand = function() {
-    return this.productContent.element(by.css('.z-vegas-ui_text.z-vegas-ui_text-vegas-detail-title')).getText();
+    return element(by.css(this.productBrandLocator)).getText();
 };
 
 ProductDetailPage.prototype.getProductName = function() {
-    return this.productContent.element(by.css('.z-vegas-ui_text.z-vegas-ui_text-vegas-body')).getText();
+    return element(by.css(this.productNameLocator)).getText();
 };
 
 ProductDetailPage.prototype.selectFirstAvailableSize = function() {
-    var self = this;
-    element(self.sizeDropDownListLocator).isPresent().then(function (isPresent) {
-        if (isPresent) {
-            element(self.sizeDropDownListLocator).click();
-            self.availableSizeLocator.first().click();
-        } else {
-            element.all(self.availableSizesLocator).first().click();
-        }
-    });
+    var sizeDropDown = element(by.css('.z-hlwd-container.z-hlwd-dropdown-placeholder.z-hlwd-align-left'));
+    sizeDropDown.click();
+    var availableSizes = element.all(by.css('div[class="z-hlwd-size-picker-option-section z-hlwd-col-9"] > h5[class="z-hlwd-text z-hlwd-color-black title-4 z-hlwd-all-caps"]'));
+    availableSizes.first().click();
 };
 
 ProductDetailPage.prototype.addToShoppingCart = function() {
-    this.addToShoppingCartButton.click();
+    var buttonLocator = 'z-pdp-topSection-addToCartButton';
+    var button = element(by.id(buttonLocator));
+    button.click();
 };
 
 ProductDetailPage.prototype.goToShoppingCart = function() {
-    this.shoppingCart.click();
+    var shoppingCart = element(by.css('a[tracking="click.header.cart"]'));
+    shoppingCart.click();
     return new ShoppingCartPage();
 };
 
