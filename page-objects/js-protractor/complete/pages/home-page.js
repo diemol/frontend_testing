@@ -5,7 +5,7 @@ HomePage = function HomePage() {
 };
 
 HomePage.prototype.visit = function () {
-    browser.get('https://www.zalando.de/');
+    browser.get('https://www.zalando.de/mosaic-mosaic-catalog');
 };
 
 HomePage.prototype.search = function (searchText) {

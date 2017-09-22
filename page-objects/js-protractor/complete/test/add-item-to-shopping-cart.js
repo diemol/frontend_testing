@@ -48,7 +48,7 @@ describe('Add item to Shopping Cart', function() {
     });
 
     it('Assert article brand and name', function() {
-        expect(expectedProductBrand).toEqual(productBrand.getText());
+        expect(expectedProductBrand).toEqual(shoppingCartPage.getProductBrand());
         expect(expectedProductName).toContain(shoppingCartPage.getProductName());
     });
 });

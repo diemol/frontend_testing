@@ -1,19 +1,12 @@
 var ShoppingCartPage = require('./shopping-cart-page.js');
 
 ProductDetailPage = function ProductDetailPage() {
-    this.newPdp = false;
     this.productNameLocator = '.z-hlwd-text.z-hlwd-color-black.title-2.z-hlwd-clamp-2';
     this.productBrandLocator = '.z-hlwd-text.z-hlwd-color-black.detail.z-hlwd-p-bottom-xs.z-hlwd-bold.z-hlwd-truncate';
-    var productName = element(by.css(this.productNameLocator));
-    productName.isPresent().then(function (isPresent) {
-        if (isPresent) {
-            this.newPdp = true;
-        } else {
-            this.productNameLocator = '.z-text.zvui-product-title-productname.z-text-block.z-text-body.z-text-black';
-            this.productBrandLocator = '.z-text.zvui-product-title-brandname.z-text-block.z-text-body.z-text-black';
-        }
-    });
-
+    this.sizeDropDownLocator = '.z-hlwd-container.z-hlwd-dropdown-placeholder.z-hlwd-align-left';
+    this.availableSizesLocator = 'h5[class="z-hlwd-text z-hlwd-color-black title-4  z-hlwd-all-caps"]';
+    this.buttonLocator = 'z-pdp-topSection-addToCartButton';
+    this.shoppingCartLocator = 'a[tracking="click.header.cart"]';
 };
 
 ProductDetailPage.prototype.getProductBrand = function() {
@@ -25,20 +18,19 @@ ProductDetailPage.prototype.getProductName = function() {
 };
 
 ProductDetailPage.prototype.selectFirstAvailableSize = function() {
-    var sizeDropDown = element(by.css('.z-hlwd-container.z-hlwd-dropdown-placeholder.z-hlwd-align-left'));
+    var sizeDropDown = element(by.css(this.sizeDropDownLocator));
     sizeDropDown.click();
-    var availableSizes = element.all(by.css('div[class="z-hlwd-size-picker-option-section z-hlwd-col-9"] > h5[class="z-hlwd-text z-hlwd-color-black title-4 z-hlwd-all-caps"]'));
+    var availableSizes = element.all(by.css(this.availableSizesLocator));
     availableSizes.first().click();
 };
 
 ProductDetailPage.prototype.addToShoppingCart = function() {
-    var buttonLocator = 'z-pdp-topSection-addToCartButton';
-    var button = element(by.id(buttonLocator));
+    var button = element(by.id(this.buttonLocator));
     button.click();
 };
 
 ProductDetailPage.prototype.goToShoppingCart = function() {
-    var shoppingCart = element(by.css('a[tracking="click.header.cart"]'));
+    var shoppingCart = element(by.css(this.shoppingCartLocator));
     shoppingCart.click();
     return new ShoppingCartPage();
 };
