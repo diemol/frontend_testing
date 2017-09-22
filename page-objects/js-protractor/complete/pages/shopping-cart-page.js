@@ -2,7 +2,7 @@
 ShoppingCartPage = function ShoppingCartPage() {
     this.productInfo = element.all(by.className('z-coast-fjord_link'));
     this.productBrand = this.productInfo.get(1);
-    this.productName = this.productInfo.last().element(by.css('.z-text.z-text-default'));
+    this.productName = this.productInfo.last();
 };
 
 ShoppingCartPage.prototype.getProductName = function() {

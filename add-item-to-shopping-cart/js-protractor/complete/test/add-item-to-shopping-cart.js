@@ -55,7 +55,7 @@ describe('Add item to Shopping Cart', function() {
         var productInfo = element.all(by.className('z-coast-fjord_link'));
         var productBrand = productInfo.get(1);
         expect(expectedProductBrand).toEqual(productBrand.getText());
-        var articleName = productInfo.last().getText();
-        expect(articleName).toContain(expectedProductName);
+        var produceNameName = productInfo.last().getText();
+        expect(produceNameName).toContain(expectedProductName);
     });
 });
