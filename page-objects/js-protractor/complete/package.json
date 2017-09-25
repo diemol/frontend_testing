@@ -17,9 +17,9 @@
   },
   "homepage": "https://github.com/diemol/frontend_testing/tree/master/page-objects/js-protractor#readme",
   "dependencies": {
-    "protractor": "^5.0.1"
+    "protractor": "^5.1.2"
   },
   "devDependencies": {
-    "jasmine-spec-reporter": "^3.2.0"
+    "jasmine-spec-reporter": "^4.2.1"
   }
 }

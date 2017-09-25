@@ -2,7 +2,7 @@
 var HomePage = require('../pages/home-page.js');
 
 
-describe('Add item to Shopping Cart', function() {
+describe('Add Nike item to Shopping Cart', function() {
     var homePage;
     var searchResultsPage;
     var productDetailPage;
