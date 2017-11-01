@@ -1,11 +1,12 @@
+const {Builder, By, Key, until} = require('selenium-webdriver');
 // Getting the Chai expect library for assertions
-var expect = require('chai').expect;
+const expect = require('chai').expect;
 
 // Selenium Grid url
-var seleniumGridUrl = 'http://localhost:4444/wd/hub';
+const seleniumGridUrl = 'http://localhost:4444/wd/hub';
 
 // Create a new instance of WebDriver
-var webDriver = require('selenium-webdriver');
+const webDriver = require('selenium-webdriver');
 
 describe('First WebDriver Test in JavaScript and Mocha', function() {
     // Global timeout for Mocha to wait for the callback function to be invoked
@@ -14,20 +15,20 @@ describe('First WebDriver Test in JavaScript and Mocha', function() {
     // Test to check the page title
     it('Page title should be Schuhe & Mode online kaufen | ZALANDO Online Shop', function(done) {
 
-        var capabilities = new webDriver.Capabilities().
+        let capabilities = new webDriver.Capabilities().
         set(webDriver.Capability.BROWSER_NAME, webDriver.Browser.CHROME).
         set(webDriver.Capability.PLATFORM, 'LINUX');
 
         // Use WebDriver to visit a search engine with Chrome
-        var driver = new webDriver.Builder()
-            .withCapabilities(capabilities)
+        let driver = new Builder()
+            .forBrowser('chrome')
             .usingServer(seleniumGridUrl)
             .build();
 
         // Maximize the window
         driver.manage().window().maximize();
 
-        // Go to PHPTravels website
+        // Go to Zalando website
         driver.get("https://www.zalando.de/");
 
         // Assert the title to the expected value

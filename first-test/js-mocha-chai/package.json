@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/diemol/frontend_testing/tree/master/first-test/js-mocha-chai#readme",
   "dependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.2.0",
-    "selenium-webdriver": "^3.3.0"
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "selenium-webdriver": "^3.6.0"
   }
 }
