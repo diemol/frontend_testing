@@ -13,9 +13,9 @@ RUN apt-get -qqy update \
 
 RUN git clone https://github.com/diemol/frontend_testing.git
 
-RUN ln -sf /frontend_testing/page-objects/js-protractor/complete /js-protractor
+RUN ln -sf /frontend_testing/page-objects/js-webdriverio/complete /js-webdriverio
 
-WORKDIR /js-protractor
+WORKDIR /js-webdriverio
 RUN npm install
 
 CMD ["npm", "test"]

@@ -1,0 +1,26 @@
+{
+  "name": "js-webdriverio-initial",
+  "version": "1.0.0",
+  "description": "Add article to bad test with WebDriverIO, using PageObjects",
+  "main": "index.js",
+  "scripts": {
+    "test": "wdio wdio.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/diemol/frontend_testing.git"
+  },
+  "author": "https://github.com/diemol",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diemol/frontend_testing/issues"
+  },
+  "homepage": "https://github.com/diemol/frontend_testing#readme",
+  "dependencies": {
+    "webdriverio": "^4.11.0"
+  },
+  "devDependencies": {
+    "wdio-allure-reporter": "^0.3.3",
+    "wdio-mocha-framework": "^0.5.12"
+  }
+}

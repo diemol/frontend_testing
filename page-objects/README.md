@@ -7,6 +7,5 @@ structure is as follows:
 written in Java with [Fluentlenium](http://fluentlenium.org) as framework. The page object classes are located in a 
 different location from the tests in a single package, nevertheless it could be more strict by separating the related 
 objects in different packages.
-* [JS-Protractor](https://github.com/diemol/frontend_testing/tree/master/page-objects/js-protractor): Tests written 
-in JavaScript, using [Protractor](http://www.protractortest.org/). Whereas classes don't come naturally in JavaScript, 
-the page object functionality can be simulated using functions and prototypes.
+* [JS-WebDriverIO](https://github.com/diemol/frontend_testing/tree/master/page-objects/js-webdriverio): Tests written 
+in JavaScript, using [WebDriverIO](http://webdriver.io). 

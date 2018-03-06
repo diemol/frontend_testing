@@ -3,7 +3,7 @@
 This is an example where a guest searches for a brand and puts an article in the bag.
 
 Implemented in [Java with Fluentlenium](https://github.com/diemol/frontend_testing/tree/master/add-item-to-shopping-cart/java-fluentlenium)
-and [JavaScript with Protractor](https://github.com/diemol/frontend_testing/tree/master/add-item-to-shopping-cart/js-protractor).
+and [JavaScript with WebDriverIO](https://github.com/diemol/frontend_testing/tree/master/add-item-to-shopping-cart/js-webdriverio).
 
 On each implementation, you will find two folders:
 * Initial: Just contains a folder structure and some files to help you get started and develop the test.
