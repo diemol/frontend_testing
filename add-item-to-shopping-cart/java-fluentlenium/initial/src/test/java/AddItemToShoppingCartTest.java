@@ -1,9 +1,8 @@
 import org.fluentlenium.adapter.testng.FluentTestNg;
-import org.fluentlenium.core.domain.FluentList;
-import org.fluentlenium.core.domain.FluentWebElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
@@ -26,8 +25,8 @@ public class AddItemToShoppingCartTest extends FluentTestNg {
 
     @Override
     public Capabilities getCapabilities() {
-        DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
-        desiredCapabilities.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
+        DesiredCapabilities desiredCapabilities = new DesiredCapabilities(new ChromeOptions());
+        desiredCapabilities.setCapability(CapabilityType.PLATFORM_NAME, Platform.LINUX);
         return desiredCapabilities;
     }
 
@@ -36,23 +35,16 @@ public class AddItemToShoppingCartTest extends FluentTestNg {
         assert that the article name and value is the correct one.
      */
     @Test
-    public void searchArticleAndAddItToBag() throws InterruptedException {
+    public void searchArticleAndAddItToBag() {
         // Go to the homepage
         LOG.info("Loading https://www.zalando.de/...");
         window().maximize();
         goTo("https://www.zalando.de/");
 
         LOG.info("Type Nike in the search field...");
-        find(By.id("searchContent")).write("Nike").submit();
+        find(By.cssSelector(".z-navicat-header_searchInput")).write("Nike").submit();
 
         LOG.info("Click on the first item...");
-        find(By.className("catalogArticlesList_item")).first().click();
-
-        LOG.info("Get product brand and name...");
-        FluentList<FluentWebElement> productContent = find(By.className("z-vegas-ui_article-brand-info_content"));
-        String expectedProductBrand =
-                productContent.find(By.cssSelector(".z-vegas-ui_text.z-vegas-ui_text-vegas-detail-title")).text();
-        String expectedProductName =
-                productContent.find(By.cssSelector(".z-vegas-ui_text.z-vegas-ui_text-vegas-body")).text();
+        find(By.cssSelector("z-grid[class='z-nvg-cognac_articles'] > z-grid-item:first-child")).click();
     }
 }
