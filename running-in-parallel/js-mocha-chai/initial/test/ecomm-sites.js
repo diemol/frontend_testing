@@ -54,7 +54,7 @@ describe('Check Ecomm Sites Test', function() {
 
         // Assert the title to the expected value
         driver.getTitle().then(function(title) {
-            expect(title).to.equal('Schuhe & Mode online kaufen | ZALANDO Online Shop');
+            expect(title).to.equal('Schuhe, Mode und Accessoires online kaufen | Schnelle Lieferung von Zalando');
             done();
         });
 

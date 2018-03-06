@@ -13,7 +13,7 @@ describe('First WebDriver Test in JavaScript and Mocha', function() {
     this.timeout(60000);
 
     // Test to check the page title
-    it('Page title should be Schuhe & Mode online kaufen | ZALANDO Online Shop', function(done) {
+    it('Page title should be Schuhe, Mode und Accessoires online kaufen | Schnelle Lieferung von Zalando', function(done) {
 
         // Use WebDriver to visit a search engine with Chrome
         let driver = new Builder()

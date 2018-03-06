@@ -58,7 +58,7 @@ describe('Search Engines Test', function() {
 
         // Assert the title to the expected value
         driver.getTitle().then(function(title) {
-            expect(title).to.equal('DuckDuckGo');
+            expect(title).to.equal('DuckDuckGo Search Engine');
             done();
         });
 

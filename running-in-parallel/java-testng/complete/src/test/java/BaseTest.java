@@ -34,7 +34,7 @@ public class BaseTest {
         Platform platform = (Platform) testArgs[1];
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability(CapabilityType.BROWSER_NAME, browserType);
-        desiredCapabilities.setCapability(CapabilityType.PLATFORM, platform);
+        desiredCapabilities.setCapability(CapabilityType.PLATFORM_NAME, platform);
         desiredCapabilities.setCapability("name", method.getName());
 
         webDriver.set(new RemoteWebDriver(new URL(SELENIUM_GRID_URL), desiredCapabilities));
