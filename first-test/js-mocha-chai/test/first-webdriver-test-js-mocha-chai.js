@@ -33,7 +33,7 @@ describe('First WebDriver Test in JavaScript and Mocha', function() {
 
         // Assert the title to the expected value
         driver.getTitle().then(function(title) {
-            expect(title).to.equal('Schuhe & Mode online kaufen | ZALANDO Online Shop');
+            expect(title).to.equal('Schuhe, Mode und Accessoires online kaufen | Schnelle Lieferung von Zalando');
         });
 
         // Quitting the browser and invoking the callback function to tell Mocha that we are done

@@ -1,5 +1,6 @@
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -16,8 +17,7 @@ public class FirstWebDriverTestJavaTestNGTest {
 
     @Test
     public void checkZalandoPageTitle() throws MalformedURLException {
-        DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
-        desiredCapabilities.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
+        DesiredCapabilities desiredCapabilities = new DesiredCapabilities(new ChromeOptions());
 
         // Create a new instance of the remote web driver
         WebDriver driver = new RemoteWebDriver(new URL(URL), desiredCapabilities);
@@ -29,7 +29,7 @@ public class FirstWebDriverTestJavaTestNGTest {
         driver.get("https://www.zalando.de/");
 
         // Assert that the title is the expected one
-        Assert.assertEquals(driver.getTitle(), "Schuhe & Mode online kaufen | ZALANDO Online Shop",
+        Assert.assertEquals(driver.getTitle(), "Schuhe, Mode und Accessoires online kaufen | Schnelle Lieferung von Zalando",
                 "Page title is not the expected one");
 
         // Close the browser
