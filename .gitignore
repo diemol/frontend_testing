@@ -4,3 +4,6 @@ target
 node_modules
 npm-debug.log
 CI/videos
+errorShots
+allure-report
+allure-results

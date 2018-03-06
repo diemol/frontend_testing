@@ -1,4 +1,4 @@
-### Selenium WebDriver example in JavaScript with Protractor
+### Selenium WebDriver example in JavaScript with WebDriverIO
 
 #### Environment Setup
 
@@ -10,7 +10,7 @@ Check your [JavaScript](https://github.com/diemol/frontend_testing#javascript) a
 
     ```sh
     git clone https://github.com/diemol/frontend_testing
-    cd frontend_testing/add-item-to-shopping-cart/js-protractor/<initial|complete>
+    cd frontend_testing/add-item-to-shopping-cart/js-webdriverio/<initial|complete>
     ```
 1. Install Node dependencies:
 

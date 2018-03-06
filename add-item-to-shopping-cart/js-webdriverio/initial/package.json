@@ -1,0 +1,27 @@
+{
+  "name": "js-webdriver-initial",
+  "version": "1.0.0",
+  "description": "Add article to bad test with WebDriverIO",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/wdio wdio.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/diemol/frontend_testing.git"
+  },
+  "author": "https://github.com/diemol",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diemol/frontend_testing/issues"
+  },
+  "homepage": "https://github.com/diemol/frontend_testing#readme",
+  "dependencies": {
+    "webdriverio": "^4.11.0"
+  },
+  "devDependencies": {
+    "allure-commandline": "^2.5.0",
+    "wdio-allure-reporter": "^0.3.3",
+    "wdio-mocha-framework": "^0.5.12"
+  }
+}
