@@ -11,7 +11,7 @@ public class EcommSitesTest extends BaseTest {
         getWebDriver().get("http://www.zalando.de");
 
         // Assert that the title is the expected one
-        Assert.assertEquals(getWebDriver().getTitle(), "Schuhe & Mode online kaufen | ZALANDO Online Shop",
+        Assert.assertEquals(getWebDriver().getTitle(), "Schuhe, Mode und Accessoires online kaufen | Schnelle Lieferung von Zalando",
                 "Page title is not the expected one");
     }
 

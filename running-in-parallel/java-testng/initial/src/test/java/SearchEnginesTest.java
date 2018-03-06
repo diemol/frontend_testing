@@ -62,7 +62,7 @@ public class SearchEnginesTest {
         webDriver.get("http://www.duckduckgo.com");
 
         // Assert that the title is the expected one
-        Assert.assertEquals(webDriver.getTitle(), "DuckDuckGo", "Page title is not the expected one");
+        Assert.assertEquals(webDriver.getTitle(), "DuckDuckGo Search Engine", "Page title is not the expected one");
     }
 
 }
