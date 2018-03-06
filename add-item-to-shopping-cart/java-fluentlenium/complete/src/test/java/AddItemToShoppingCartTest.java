@@ -4,10 +4,12 @@ import org.fluentlenium.core.domain.FluentWebElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -28,8 +30,8 @@ public class AddItemToShoppingCartTest extends FluentTestNg {
 
     @Override
     public Capabilities getCapabilities() {
-        DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
-        desiredCapabilities.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
+        DesiredCapabilities desiredCapabilities = new DesiredCapabilities(new ChromeOptions());
+        desiredCapabilities.setCapability(CapabilityType.PLATFORM_NAME, Platform.LINUX);
         return desiredCapabilities;
     }
 
@@ -38,46 +40,43 @@ public class AddItemToShoppingCartTest extends FluentTestNg {
         assert that the product name and value is the correct one.
      */
     @Test
-    public void searchProductAndAddItToBag() throws InterruptedException {
+    public void searchProductAndAddItToBag() {
         // Go to the homepage
         LOG.info("Loading https://www.zalando.de/...");
         window().maximize();
         goTo("https://www.zalando.de/");
 
         LOG.info("Type Nike in the search field...");
-        find(By.id("searchContent")).write("Nike").submit();
+        find(By.cssSelector(".z-navicat-header_searchInput")).write("Nike").submit();
 
         LOG.info("Click on the first item...");
-        find(By.className("catalogArticlesList_item")).first().click();
+        find(By.cssSelector("z-grid[class='z-nvg-cognac_articles'] > z-grid-item:first-child")).click();
 
         LOG.info("Get product brand and name...");
-        String expectedProductBrand =
-                find(By.cssSelector(".z-text-block.zvui-product-title-brandname.z-text.z-text-body.z-text-black")).text();
-        String expectedProductName =
-                find(By.cssSelector(".z-text-block.zvui-product-title-productname.z-text.z-text-body.z-text-black")).text();
+        String expectedProductBrand = find(By.cssSelector("h2[class*='h-color-black'][class*='detail']")).first().text();
+        String expectedProductName = find(By.cssSelector("h1[class*='h-text']")).first().text();
+        LOG.info("Brand -> " + expectedProductBrand);
+        LOG.info("Product -> " + expectedProductName);
 
         LOG.info("Click on the first available size...");
-        if (find(By.className("zvui-size-select-dropdown-placeholder")).present()) {
-            find(By.className("zvui-size-select-dropdown-placeholder")).first().click();
-            find(By.className("zvui-size-select-dropdown-option")).first().click();
-        } else {
-            find(By.cssSelector(".z-vegas-ui_sizeItem.z-vegas-ui_interactable.z-vegas-ui_sizeList_listItem")).first().click();
-        }
-
+        find(By.cssSelector(".h-container.h-dropdown-placeholder")).click();
+        String sizeSelector = "h5[class*='h-color-black'][class*='title-4'][class*='h-all-caps']";
+        await().atMost(5, TimeUnit.SECONDS).until(el(sizeSelector)).present();
+        find(By.cssSelector("h5[class*='h-color-black'][class*='title-4'][class*='h-all-caps']")).click();
 
         LOG.info("Add product to shopping cart...");
-        find(By.cssSelector(".z-richButton.z-richButton-primary")).click();
+        find(By.cssSelector("#z-pdp-topSection-addToCartButton")).click();
 
         LOG.info("Go to shopping cart...");
-        // Not possible to get a visible unique element for the shopping cart, and there are currently 5 elements
-        // with the same class. The shopping cart is the last one. The test may break when they change the order.
-        find(By.cssSelector("div[class='z-navicat-header_userAccNaviItem']")).last().click();
+        String goToShoppingCartSelector = "a[class='z-navicat-header_navToolItemLink']";
+        await().atMost(5, TimeUnit.SECONDS).until(el(goToShoppingCartSelector)).present();
+        find(By.cssSelector("a[class='z-navicat-header_navToolItemLink']")).click();
 
         LOG.info("Assert product brand and name...");
         FluentList<FluentWebElement> productInfo = find(By.className("z-coast-fjord_link"));
         String productBrand = productInfo.get(1).text();
-        String productName = productInfo.last().find(By.cssSelector(".z-text.z-text-default")).text();
-        assertThat(expectedProductBrand).isEqualToIgnoringCase(productBrand);
-        assertThat(expectedProductName).isEqualToIgnoringCase(productName);
+        String productName = productInfo.last().text();
+        assertThat(productBrand).containsIgnoringCase(expectedProductBrand);
+        assertThat(productName).containsIgnoringCase(expectedProductName);
     }
 }
