@@ -2,6 +2,7 @@ import org.fluentlenium.adapter.testng.FluentTestNg;
 import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
@@ -10,6 +11,7 @@ import pages.SearchResultsPage;
 
 import java.util.logging.Logger;
 
+@SuppressWarnings("unused")
 public class AddItemToShoppingCartTest extends FluentTestNg {
 
     private static final Logger LOG = Logger.getLogger(AddItemToShoppingCartTest.class.getName());
@@ -29,8 +31,8 @@ public class AddItemToShoppingCartTest extends FluentTestNg {
 
     @Override
     public Capabilities getCapabilities() {
-        DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
-        desiredCapabilities.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
+        DesiredCapabilities desiredCapabilities = new DesiredCapabilities(new ChromeOptions());
+        desiredCapabilities.setCapability(CapabilityType.PLATFORM_NAME, Platform.LINUX);
         return desiredCapabilities;
     }
 
@@ -39,7 +41,7 @@ public class AddItemToShoppingCartTest extends FluentTestNg {
         assert that the product name and value is the correct one.
      */
     @Test
-    public void searchArticleAndAddItToBag() throws InterruptedException {
+    public void searchArticleAndAddItToBag() {
 
         // Go to the homepage
         LOG.info("Loading https://www.zalando.de/...");

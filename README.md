@@ -4,14 +4,7 @@
 
 This repository contains different examples that are used during a basic Frontend Testing workshop.
 
-The code was written in general in a simple way, without any frameworks or external tools that could hide the basic
-steps to develop tests with Selenium WebDriver.
-
-The main idea of the code is to show how tests can be written from scratch, but it is clear that different frameworks
-could be used to simplify the code and provide helper functions. Nevertheless, the intention is to keep it basic and
-simple.
-
-The examples are provided in Java with TestNG and JavaScript with Mocha + Chai.
+The examples are provided in Java with TestNG+Fluentlenium and JavaScript with WebDriverIO+Mocha+Chai.
 
 ## The code is structured as follows:
 * [first-test](https://github.com/diemol/frontend_testing/tree/master/first-test)

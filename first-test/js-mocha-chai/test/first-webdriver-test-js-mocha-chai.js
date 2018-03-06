@@ -15,10 +15,6 @@ describe('First WebDriver Test in JavaScript and Mocha', function() {
     // Test to check the page title
     it('Page title should be Schuhe & Mode online kaufen | ZALANDO Online Shop', function(done) {
 
-        let capabilities = new webDriver.Capabilities().
-        set(webDriver.Capability.BROWSER_NAME, webDriver.Browser.CHROME).
-        set(webDriver.Capability.PLATFORM, 'LINUX');
-
         // Use WebDriver to visit a search engine with Chrome
         let driver = new Builder()
             .forBrowser('chrome')
