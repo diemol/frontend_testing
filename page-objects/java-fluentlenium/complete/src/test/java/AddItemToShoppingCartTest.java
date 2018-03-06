@@ -1,8 +1,7 @@
 import org.fluentlenium.adapter.testng.FluentTestNg;
 import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.Platform;
-import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -14,6 +13,7 @@ import java.util.logging.Logger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@SuppressWarnings("unused")
 public class AddItemToShoppingCartTest extends FluentTestNg {
 
     private static final Logger LOG = Logger.getLogger(AddItemToShoppingCartTest.class.getName());
@@ -33,8 +33,7 @@ public class AddItemToShoppingCartTest extends FluentTestNg {
 
     @Override
     public Capabilities getCapabilities() {
-        DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
-        desiredCapabilities.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
+        DesiredCapabilities desiredCapabilities = new DesiredCapabilities(new ChromeOptions());
         desiredCapabilities.setCapability("name", "searchArticleAndAddItToBag");
         return desiredCapabilities;
     }
@@ -44,7 +43,7 @@ public class AddItemToShoppingCartTest extends FluentTestNg {
         assert that the product name and value is the correct one.
      */
     @Test
-    public void searchArticleAndAddItToBag() throws InterruptedException {
+    public void searchArticleAndAddItToBag() {
 
         // Go to the homepage
         LOG.info("Loading https://www.zalando.de/...");
@@ -72,7 +71,7 @@ public class AddItemToShoppingCartTest extends FluentTestNg {
         ShoppingCartPage shoppingCartPage = productDetailPage.goToShoppingCart();
 
         LOG.info("Assert product brand and name...");
-        assertThat(expectedProductBrand).isEqualToIgnoringCase(shoppingCartPage.getProductBrand());
-        assertThat(expectedProductName).isEqualToIgnoringCase(shoppingCartPage.getProductName());
+        assertThat(shoppingCartPage.getProductBrand()).containsIgnoringCase(expectedProductBrand);
+        assertThat(shoppingCartPage.getProductName()).containsIgnoringCase(expectedProductName);
     }
 }

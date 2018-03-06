@@ -4,6 +4,8 @@ import org.fluentlenium.core.FluentPage;
 import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.By;
 
+import java.util.concurrent.TimeUnit;
+
 @SuppressWarnings("FieldCanBeLocal")
 public class ProductDetailPage extends FluentPage {
 
@@ -11,39 +13,29 @@ public class ProductDetailPage extends FluentPage {
     @Page
     private ShoppingCartPage shoppingCartPage;
 
-    private final String PRODUCT_CONTENT = "z-vegas-ui_article-brand-info_content";
-    private final String PRODUCT_BRAND = ".z-vegas-ui_text.z-vegas-ui_text-vegas-detail-title";
-    private final String PRODUCT_NAME = ".z-vegas-ui_text.z-vegas-ui_text-vegas-body";
-
     public String getProductBrand() {
-        return find(By.className(PRODUCT_CONTENT)).find(By.cssSelector(PRODUCT_BRAND)).text();
+        return find(By.cssSelector("h2[class*='h-color-black'][class*='detail']")).first().text();
     }
 
     public String getProductName() {
-        return find(By.className(PRODUCT_CONTENT)).find(By.cssSelector(PRODUCT_NAME)).text();
+        return find(By.cssSelector("h1[class*='h-text']")).first().text();
     }
 
     public void selectFirstAvailableSize() {
-        By zVegasDropOverFacet = By.className("z-vegas-ui_dropover-facet");
-        if (find(zVegasDropOverFacet).present()) {
-            find(zVegasDropOverFacet).click();
-            String availableSize = ".z-vegas-ui_sizeDropdown_sizeListItem.z-vegas-ui_sizeDropdown_sizeListItem-available";
-            By availableSizeLocator = By.cssSelector(availableSize);
-            find(availableSizeLocator).first().click();
-        } else {
-            By listItem = By.cssSelector(".z-vegas-ui_sizeItem.z-vegas-ui_interactable.z-vegas-ui_sizeList_listItem");
-            find(listItem).first().click();
-        }
+        find(By.cssSelector(".h-container.h-dropdown-placeholder")).click();
+        String sizeSelector = "h5[class*='h-color-black'][class*='title-4'][class*='h-all-caps']";
+        await().atMost(5, TimeUnit.SECONDS).until(el(sizeSelector)).present();
+        find(By.cssSelector("h5[class*='h-color-black'][class*='title-4'][class*='h-all-caps']")).click();
     }
 
     public void addToShoppingCart() {
-        find(By.cssSelector(".z-button.z-button-primary.z-button-button.z-button_mouse")).click();
+        find(By.cssSelector("#z-pdp-topSection-addToCartButton")).click();
     }
 
     public ShoppingCartPage goToShoppingCart() {
-        // Not possible to get a visible unique element for the shopping cart, and there are currently 5 elements
-        // with the same class. The shopping cart is the last one. The test may break when they change the order.
-        find(By.cssSelector("div[class='z-navicat-header_userAccNaviItem']")).last().click();
+        String goToShoppingCartSelector = "a[class='z-navicat-header_navToolItemLink']";
+        await().atMost(5, TimeUnit.SECONDS).until(el(goToShoppingCartSelector)).present();
+        find(By.cssSelector("a[class='z-navicat-header_navToolItemLink']")).click();
         return shoppingCartPage;
     }
 }

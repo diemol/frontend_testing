@@ -55,14 +55,12 @@ public class AddItemToShoppingCartTest extends FluentTestNg {
         LOG.info("Get product brand and name...");
         String expectedProductBrand = find(By.cssSelector("h2[class*='h-color-black'][class*='detail']")).first().text();
         String expectedProductName = find(By.cssSelector("h1[class*='h-text']")).first().text();
-        LOG.info("Brand -> " + expectedProductBrand);
-        LOG.info("Product -> " + expectedProductName);
 
         LOG.info("Click on the first available size...");
         find(By.cssSelector(".h-container.h-dropdown-placeholder")).click();
         String sizeSelector = "h5[class*='h-color-black'][class*='title-4'][class*='h-all-caps']";
         await().atMost(5, TimeUnit.SECONDS).until(el(sizeSelector)).present();
-        find(By.cssSelector("h5[class*='h-color-black'][class*='title-4'][class*='h-all-caps']")).click();
+        find(By.cssSelector(sizeSelector)).click();
 
         LOG.info("Add product to shopping cart...");
         find(By.cssSelector("#z-pdp-topSection-addToCartButton")).click();
@@ -70,7 +68,7 @@ public class AddItemToShoppingCartTest extends FluentTestNg {
         LOG.info("Go to shopping cart...");
         String goToShoppingCartSelector = "a[class='z-navicat-header_navToolItemLink']";
         await().atMost(5, TimeUnit.SECONDS).until(el(goToShoppingCartSelector)).present();
-        find(By.cssSelector("a[class='z-navicat-header_navToolItemLink']")).click();
+        find(By.cssSelector(goToShoppingCartSelector)).click();
 
         LOG.info("Assert product brand and name...");
         FluentList<FluentWebElement> productInfo = find(By.className("z-coast-fjord_link"));

@@ -6,15 +6,14 @@ import org.openqa.selenium.By;
 
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("unused")
 public class SearchResultsPage extends FluentPage {
 
     @Page
     private ProductDetailPage productDetailPage;
 
     public ProductDetailPage clickOnFirstProduct() {
-        By catalogArticlesList_item = By.className("catalogArticlesList_item");
-        await().atMost(20, TimeUnit.SECONDS).until(find(catalogArticlesList_item).first()).enabled();
-        find(catalogArticlesList_item).first().click();
+        find(By.cssSelector("z-grid[class='z-nvg-cognac_articles'] > z-grid-item:first-child")).click();
         return productDetailPage;
     }
 }
