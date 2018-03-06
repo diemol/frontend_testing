@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/diemol/frontend_testing#readme",
   "dependencies": {
+    "chai": "^4.1.2",
     "webdriverio": "^4.11.0"
   },
   "devDependencies": {

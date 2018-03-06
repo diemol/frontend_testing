@@ -1,4 +1,6 @@
-var assert = require('assert');
+var assert = require('chai').assert;
+let expectedProductBrand;
+let expectedProductName
 
 describe('Add item to Shopping Cart', function() {
 
@@ -21,10 +23,8 @@ describe('Add item to Shopping Cart', function() {
     });
 
     it('Get product brand and name...', function () {
-        const expectedProductBrand = browser.getText("h2[class*='h-color-black'][class*='detail']");
-        const expectedProductName = browser.getText("h1[class*='h-text']");
-        console.log("expectedProductBrand -> " + expectedProductBrand);
-        console.log("expectedProductName -> " + expectedProductName);
+        expectedProductBrand = browser.getText("h2[class*='h-color-black'][class*='detail']");
+        expectedProductName = browser.getText("h1[class*='h-text']");
     });
 
     it('Click on the first available size...', function () {
@@ -51,8 +51,8 @@ describe('Add item to Shopping Cart', function() {
         const productInfo = browser.elements(".z-coast-fjord_link");
         const productBrand = productInfo.value[1].getText();
         const productName = productInfo.value[2].getText();
-        console.log("productBrand -> " + productBrand);
-        console.log("productName -> " + productName);
+        assert.include(productBrand, expectedProductBrand);
+        assert.include(productName, expectedProductName);
     });
 
 });
