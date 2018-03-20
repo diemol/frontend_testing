@@ -36,5 +36,13 @@ node('kraken') {
         // sh 'cd /; ls -lah **/**'
         sh '/tools/run :frontend -v /tmp/videos:/tmp/videos -- ls -la /tmp/videos'
         archiveArtifacts allowEmptyArchive: true, artifacts: '**/videos/**, *.log, logs/*, reports/**, videos/*.html, videos/*.css, videos/*.ico'
+        publishHTML (target: [
+                reportName: "Zalenium",
+                reportDir: 'videos',
+                reportFiles: 'dashboard.html',
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true
+        ])
     }
 }
